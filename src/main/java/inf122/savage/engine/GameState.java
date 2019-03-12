@@ -45,4 +45,8 @@ public class GameState{
         this.GameBoard = new Board(rowCount, colCount);
         return true;
     }
+
+    public Player getCurrentPlayer(){
+        return this.currentPlayer;
+    }
 }

@@ -30,6 +30,10 @@ public class Player{
         return this.winCount;
     }
 
+    public void setWinCount(int amount){
+        this.winCount = amount;
+    }
+
     public boolean addWin(){
         this.winCount++;
         return true;

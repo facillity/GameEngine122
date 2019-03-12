@@ -28,16 +28,12 @@ public class JSONPlayerSaver{
 		return JSONPlayerSaver.loadFile();
 	}
 
-	public static void saveFile(JSONObject obj){
-		try (FileWriter file = new FileWriter(JSONPlayerSaver.filename)){
+	public static void saveFile(JSONObject obj) {
+		try (FileWriter file = new FileWriter(JSONPlayerSaver.filename)) {
 			file.write(obj.toJSONString());
 			file.flush();
-		}catch(IOException ex){
+		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
-	}
-
-	public static void main(String[] args) {
-		System.out.println(JSONPlayerSaver.loadFile());
 	}
 }
