@@ -4,14 +4,7 @@ public class Player{
     private String name;
     private double score;
     private int winCount;
-
-    // Constructor
-    public Player(){
-        this.name = "NO_NAME"; // Might want to change to Player1 / Player2 if we can keep track somehow..
-        this.score = 0;
-        this.winCount = 0;
-    }
-
+    
     public Player(String newName){
         this.name = newName;
         this.score = 0;

@@ -6,6 +6,14 @@ import inf122.savage.util.PlayerFactory;
 public abstract class BaseGame implements GamePlugin{
 	private GameState state;
 
+	public BaseGame(int row, int col){
+		this(row, col, "Player 1", "Player 2");
+	}
+
+	public BaseGame(int row, int col, String p){
+		this(row, col, p, "Player 2");
+	}
+
 	public BaseGame(int row, int col, String player1, String player2){
 		Player p1 = PlayerFactory.loadPlayer(player1, this.getName());
 		Player p2 = PlayerFactory.loadPlayer(player2, this.getName());
