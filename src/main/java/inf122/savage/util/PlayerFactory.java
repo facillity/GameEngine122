@@ -20,17 +20,18 @@ public abstract class PlayerFactory {
 
     public static void savePlayer(Player p, String gameName){
         JSONObject data = JSONPlayerSaver.loadFile();
-        if(data.containsKey(p.getName())){
-            JSONObject playerData = (JSONObject) data.get(p.getName());
-            playerData.put(gameName, p.getWinCount());
-            data.put(p.getName(), playerData);
-            JSONPlayerSaver.saveFile(data);
-        }
+        JSONObject playerData = data.containsKey(p.getName()) ? (JSONObject) data.get(p.getName()) : new JSONObject();
+        playerData.put(gameName, p.getWinCount());
+        data.put(p.getName(), playerData);
+        JSONPlayerSaver.saveFile(data);
     }
 
     public static void main(String[] args){
         Player p = PlayerFactory.loadPlayer("facility", "othello");
         p.addWin();
         PlayerFactory.savePlayer(p, "othello");
+
+        Player p2 = PlayerFactory.loadPlayer("hello", "othello");
+        PlayerFactory.savePlayer(p2, "othello");
     }
 }
