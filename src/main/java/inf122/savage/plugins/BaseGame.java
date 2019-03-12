@@ -5,6 +5,15 @@ import inf122.savage.util.PlayerFactory;
 
 public abstract class BaseGame implements GamePlugin{
 	private GameState state;
+	private static final int DEFAULT_NUM_ROWS = 3;
+	private static final int DEFAULT_NUM_COLS = 3;
+
+	private static final int GAME_NOT_OVER = 3;
+	private static final int TIE = 2;
+
+	public BaseGame(){
+		this(DEFAULT_NUM_ROWS, DEFAULT_NUM_COLS);
+	}
 
 	public BaseGame(int row, int col){
 		this(row, col, "Player 1", "Player 2");
