@@ -9,6 +9,8 @@ public class Board{
 	private int numRows;
 	private int numCols;
 
+	public static final int EMPTY = 0;
+
 	public Board(int userNumRows, int userNumCols){
 	    if (userNumRows <= 0 || userNumCols <= 0){
 	        // TO-DO: Handle 0 & Negative rows. Return Null?

@@ -41,8 +41,16 @@ public class GameState{
         return true;
     }
 
+    public int getCurrentPlayerInt(){
+        return this.currentPlayer;
+    }
+
     public Player getCurrentPlayer(){
         return this.players[this.currentPlayer];
+    }
+
+    public Player getPlayer(int index){
+        return this.players[index];
     }
 
     public Board getGameBoard(){

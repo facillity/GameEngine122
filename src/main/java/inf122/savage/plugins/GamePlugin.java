@@ -21,4 +21,18 @@ public interface GamePlugin{
 	  * @return String representation of the Game
 	  */
 	public String getName();
+
+	/**
+	 * Returns the index for winning player of the game.
+	 * @return 0/1 for player 1/2; 2 for tie; 3 if game not over
+	 */
+	public int getWinner();
+
+
+	/**
+	 * Returns the winner of the game
+	 * @return Player object for winner
+	 */
+	public Player getWinningPlayer();
+
 }
