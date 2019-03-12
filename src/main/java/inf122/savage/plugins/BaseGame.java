@@ -1,14 +1,23 @@
 package inf122.savage.plugins;
 
 import inf122.savage.engine.*;
+import inf122.savage.util.PlayerFactory;
 
 public abstract class BaseGame implements GamePlugin{
 	private GameState state;
 
+	public BaseGame(int row, int col){
+		this(row, col, "Player 1", "Player 2");
+	}
+
+	public BaseGame(int row, int col, String p){
+		this(row, col, p, "Player 2");
+	}
+
 	public BaseGame(int row, int col, String player1, String player2){
-		// Player p1 = PlayerFactory.getPlayer(player1, this.getName());
-		// Player p2 = PlayerFactory.getPlayer(player2, this.getName());
-		// this.state = new GameState(row, col, p1, p2);
+		Player p1 = PlayerFactory.loadPlayer(player1, this.getName());
+		Player p2 = PlayerFactory.loadPlayer(player2, this.getName());
+		this.state = new GameState(p1, p2, row, col);
 	}
 
 	/**
@@ -29,8 +38,8 @@ public abstract class BaseGame implements GamePlugin{
 	  * Default method for getting the current player
 	  * This is likely not to be changed.
 	  */
-	// @Override
-	// public Player currentPlayer(){
-	// 	return this.state.currentPlayer();
-	// }
+	 @Override
+	 public Player currentPlayer(){
+	 	return this.state.getCurrentPlayer();
+	 }
 }
