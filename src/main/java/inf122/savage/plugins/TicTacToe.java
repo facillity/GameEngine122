@@ -25,7 +25,7 @@ public class TicTacToe extends BaseGame {
             return false;
         }
 
-        this.state.getGameBoard().change(row, col, this.state.getCurrentPlayerInt());
+        this.state.getGameBoard().change(row, col, this.state.getCurrentPlayerInt() + 1);
 
         this.state.switchPlayer();
 
