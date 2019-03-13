@@ -39,7 +39,12 @@ public class TicTacToe extends BaseGame {
      * If so, will update the winner.
      */
     private void checkWinner(){
+        int[][] board = this.state.getGameBoard().getBoard();
+        int win;
 
+        if(checkRows(board) || checkColumns(board) || checkDiagonals(board)){
+            return;
+        }
     }
 
     /**
@@ -49,4 +54,60 @@ public class TicTacToe extends BaseGame {
     private boolean isGameOver() {
         return this.winner != BaseGame.GAME_NOT_OVER;
     }
+
+    /**
+     * Checks if there is a winner in this row
+     * @param row length 3 of tic tac toe elements
+     * @return 0/1 if player wins, 2 if no winner
+     */
+    private int checkSeries(int[] row){
+        int tile = row[0];
+        if (tile != Board.EMPTY && tile == row[1] && tile == row[2]){
+            return 1;
+        }
+        return 2;
+    }
+
+    private boolean checkRows(int[][] board){
+        int win;
+        for(int[] row : board){
+            win = checkSeries(row);
+            if (win != BaseGame.TIE){
+                this.winner = win;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkColumns(int[][] board){
+        int win;
+        for(int c=0; c<board[0].length; c++){
+            int[] col = {board[0][c], board[1][c], board[2][c]};
+            win = checkSeries(col);
+            if (win != BaseGame.TIE){
+                this.winner = win;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private boolean checkDiagonals(int[][] board){
+        int win;
+        int[][] diags = {{board[0][0], board[1][1], board[2][2]},
+                        {board[2][0], board[1][1], board[0][2]}};
+
+        for(int[] diag : diags){
+            win = checkSeries(diag);
+            if (win != BaseGame.TIE){
+                this.winner = win;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

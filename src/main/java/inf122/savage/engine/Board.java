@@ -49,4 +49,7 @@ public class Board{
         }
         return this.boardSpace[userNumRow][userNumCol];
     }
+    public int[][] getBoard(){
+        return this.boardSpace;
+    }
 }
