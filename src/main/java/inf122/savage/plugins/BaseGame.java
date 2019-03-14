@@ -4,7 +4,17 @@ import inf122.savage.engine.*;
 import inf122.savage.util.PlayerFactory;
 
 public abstract class BaseGame implements GamePlugin{
-	private GameState state;
+	protected GameState state;
+	protected int winner = GAME_NOT_OVER;
+	private static final int DEFAULT_NUM_ROWS = 3;
+	private static final int DEFAULT_NUM_COLS = 3;
+
+	public static final int TIE = 2;
+	public static final int GAME_NOT_OVER = 3;
+
+	public BaseGame(){
+		this(DEFAULT_NUM_ROWS, DEFAULT_NUM_COLS);
+	}
 
 	public BaseGame(int row, int col){
 		this(row, col, "Player 1", "Player 2");
@@ -21,10 +31,10 @@ public abstract class BaseGame implements GamePlugin{
 	}
 
 	/**
-	  * Default method just gives you class name 
-	  * i.e. "BaseGame"
-	  * Changing this value will change what the JSON is indexed by.
-	  */
+	 * Default method just gives you class name
+	 * i.e. "BaseGame"
+	 * Changing this value will change what the JSON is indexed by.
+	 */
 	@Override
 	public String getName(){
 		return this.getClass().getSimpleName();
@@ -33,13 +43,25 @@ public abstract class BaseGame implements GamePlugin{
 	@Override
 	public abstract boolean move(int row, int col);
 
+	@Override
+	public Player getWinningPlayer(){
+		return this.state.getPlayer(this.winner);
+	}
 
 	/**
-	  * Default method for getting the current player
-	  * This is likely not to be changed.
-	  */
-	 @Override
-	 public Player currentPlayer(){
-	 	return this.state.getCurrentPlayer();
-	 }
+	 * Default method for getting the current player
+	 * This is likely not to be changed.
+	 */
+	@Override
+	public Player currentPlayer(){
+		return this.state.getCurrentPlayer();
+	}
+
+
+	@Override
+	public int getWinner() {
+		return this.winner;
+	}
+
+
 }

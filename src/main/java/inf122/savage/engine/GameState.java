@@ -1,40 +1,35 @@
 package inf122.savage.engine;
 
 public class GameState{
-    private Player Player1;
-    private Player Player2;
-    private Player currentPlayer;
-    private Board GameBoard;
+    private Player[] players;
+    private int currentPlayer;
+    private Board gameBoard;
 
-    public GameState(Player P1, Player P2, Board GB){
-        this.Player1 = P1;
-        this.Player2 = P2;
-        this.currentPlayer = P1;
-        this.GameBoard = GB;
+    public GameState(Player p1, Player p2, Board board){
+        this.players = new Player[2];
+        this.players[0] = p1;
+        this.players[1] = p2;
+        this.currentPlayer = 0;
+        this.gameBoard = board;
     }
 
-    public GameState(Player P1, Player P2, int numRows, int numCols){
-        this.Player1 = P1;
-        this.Player2 = P2;
-        this.currentPlayer = P1;
+    public GameState(Player p1, Player p2, int numRows, int numCols){
+        this.players = new Player[2];
+        this.players[0] = p1;
+        this.players[1] = p2;
+        this.currentPlayer = 0;
         makeBoard(numRows, numCols);
     }
 
     public boolean reset(){
-        // Reset Player turn.
-        this.currentPlayer = this.Player1;
+        this.currentPlayer = 0;
+        this.gameBoard.zeroOutBoard();
 
-        // Zero out GameBoard.
-        this.GameBoard.zeroOutBoard();
         return true;
     }
 
     public boolean switchPlayer(){
-        if (this.currentPlayer == this.Player1){
-            this.currentPlayer = this.Player2;
-        } else {
-            this.currentPlayer = this.Player1;
-        }
+        this.currentPlayer = (this.currentPlayer == 0) ? 1 : 0;
         return true;
     }
 
@@ -42,11 +37,23 @@ public class GameState{
         if (rowCount <= 0 || colCount <= 0){
             return false;
         }
-        this.GameBoard = new Board(rowCount, colCount);
+        this.gameBoard = new Board(rowCount, colCount);
         return true;
     }
 
-    public Player getCurrentPlayer(){
+    public int getCurrentPlayerInt(){
         return this.currentPlayer;
+    }
+
+    public Player getCurrentPlayer(){
+        return this.players[this.currentPlayer];
+    }
+
+    public Player getPlayer(int index){
+        return this.players[index];
+    }
+
+    public Board getGameBoard(){
+        return this.gameBoard;
     }
 }
