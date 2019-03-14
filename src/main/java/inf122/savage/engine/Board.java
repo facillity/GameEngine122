@@ -5,9 +5,9 @@ package inf122.savage.engine;
  * list of primitive types for a grid board game.
  */
 public class Board{
-	private int[][] boardSpace;
-	private int numRows;
-	private int numCols;
+    private int[][] boardSpace;
+    private int numRows;
+    private int numCols;
 
 	public static final int EMPTY = 0;
 
