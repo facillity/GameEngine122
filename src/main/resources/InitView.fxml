@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.effect.*?>
@@ -30,14 +31,14 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="371.0" prefWidth="532.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="404.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
          <children>
             <Text fill="#ff614a" layoutX="69.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome! Please choose a game to play." textAlignment="CENTER">
                <font>
                   <Font name="Courier" size="22.0" />
                </font>
             </Text>
-            <Button layoutX="153.0" layoutY="49.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="149.0" prefWidth="155.0" style="-fx-background-color: #ff6e49;" text="Tic-Tac-Toe">
+            <Button fx:id="tictactoe" layoutX="165.0" layoutY="51.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="149.0" prefWidth="155.0" style="-fx-background-color: #ff6e49;" text="Tic-Tac-Toe">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -45,7 +46,7 @@
                   <Font name="Courier Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="318.0" layoutY="49.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="149.0" prefWidth="155.0" style="-fx-background-color: #ff6e49;" text="Othello">
+            <Button fx:id="othello" layoutX="332.0" layoutY="51.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="149.0" prefWidth="155.0" style="-fx-background-color: #ff6e49;" text="Othello">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -53,7 +54,7 @@
                   <Font name="Courier Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="318.0" layoutY="208.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="149.0" prefWidth="155.0" style="-fx-background-color: #ff6e49;" text="Battleship">
+            <Button fx:id="battleship" layoutX="165.0" layoutY="211.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="149.0" prefWidth="155.0" style="-fx-background-color: #ff6e49;" text="Battleship">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -61,7 +62,7 @@
                   <Font name="Courier Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="153.0" layoutY="208.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="149.0" prefWidth="155.0" style="-fx-background-color: #ff6e49;" text="Checkers">
+            <Button fx:id="checkers" layoutX="332.0" layoutY="211.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="149.0" prefWidth="155.0" style="-fx-background-color: #ff6e49;" text="Checkers">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
