@@ -49,4 +49,10 @@ public class TicTacToe extends BaseGame {
     private boolean isGameOver() {
         return this.winner != BaseGame.GAME_NOT_OVER;
     }
+
+    //test for now
+    @Override
+    public int getWinner() {
+        return 3;
+    }
 }

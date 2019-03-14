@@ -1,5 +1,6 @@
 package inf122;
 
+import inf122.savage.plugins.TicTacToe;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,13 +25,27 @@ public class Controller {
 
         //create new scene from class factory gives
 
+
+
+        TicTacToe testGame = new TicTacToe();
+
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(gameName + ".fxml"));
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setOpacity(1);
         stage.setTitle(gameName);
         stage.setScene(new Scene(root, 450, 450));
-        stage.showAndWait();
+        stage.show();
+
+        if(testGame.getWinner() == 3)
+        {
+            System.out.println("Accessing tic tac toe info");
+        }
+//
+//        while(testGame.getWinner() != 1 || testGame.getWinner() != 0)
+//        {
+//
+//        }
 
     }
 
