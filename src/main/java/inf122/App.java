@@ -15,8 +15,8 @@ public class App extends Application
     @Override
     public void start(Stage stage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("InitView.fxml"));
-        stage.setTitle("");
-        stage.setScene(new Scene(root, 300, 285));
+        stage.setTitle("INF122 GameEngine");
+        stage.setScene(new Scene(root, 650, 400));
         stage.show();
 
     }
