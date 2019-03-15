@@ -9,7 +9,7 @@ public class GameState{
         this.players = new Player[2];
         this.players[0] = p1;
         this.players[1] = p2;
-        this.currentPlayer = 0;
+        this.currentPlayer = 1;
         this.gameBoard = board;
     }
 
@@ -29,7 +29,7 @@ public class GameState{
     }
 
     public boolean switchPlayer(){
-        this.currentPlayer = (this.currentPlayer == 0) ? 1 : 0;
+        this.currentPlayer = (this.currentPlayer == 1) ? 2 : 1;
         return true;
     }
 
@@ -46,7 +46,7 @@ public class GameState{
     }
 
     public Player getCurrentPlayer(){
-        return this.players[this.currentPlayer];
+        return this.players[this.currentPlayer-1];
     }
 
     public Player getPlayer(int index){
