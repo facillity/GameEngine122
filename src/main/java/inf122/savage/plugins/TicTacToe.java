@@ -110,4 +110,9 @@ public class TicTacToe extends BaseGame {
         return false;
     }
 
+    //test for now
+    @Override
+    public int getWinner() {
+        return 3;
+    }
 }

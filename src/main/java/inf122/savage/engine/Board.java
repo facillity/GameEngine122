@@ -1,44 +1,44 @@
 package inf122.savage.engine;
 
 /**
-  * Board is a wrapper for a static-sized two-dimensional
-  * list of primitive types for a grid board game.
-  */
+ * Board is a wrapper for a static-sized two-dimensional
+ * list of primitive types for a grid board game.
+ */
 public class Board{
-	private int[][] boardSpace;
-	private int numRows;
-	private int numCols;
+    private int[][] boardSpace;
+    private int numRows;
+    private int numCols;
 
-	public static final int EMPTY = 0;
+    public static final int EMPTY = 0;
 
-	public Board(int userNumRows, int userNumCols){
-	    if (userNumRows <= 0 || userNumCols <= 0){
-	        // TO-DO: Handle 0 & Negative rows. Return Null?
+    public Board(int userNumRows, int userNumCols){
+        if (userNumRows <= 0 || userNumCols <= 0){
+            // TO-DO: Handle 0 & Negative rows. Return Null?
         }
-	    this.numRows = userNumRows;
-	    this.numCols = userNumCols;
-	    boardSpace = new int[userNumRows][userNumCols];
-	    zeroOutBoard();
+        this.numRows = userNumRows;
+        this.numCols = userNumCols;
+        boardSpace = new int[userNumRows][userNumCols];
+        zeroOutBoard();
     }
 
     public boolean zeroOutBoard(){
-	    for (int x = 0; x < numRows; x++){
-	        for (int y = 0; y < numCols; y++){
-	            boardSpace[x][y] = 0;
+        for (int x = 0; x < numRows; x++){
+            for (int y = 0; y < numCols; y++){
+                boardSpace[x][y] = 0;
             }
         }
-	    return true;
+        return true;
     }
 
     public boolean change(int userNumRow, int userNumCol, int newTile){
-	    if (userNumRow < 0 || userNumRow >= this.numRows){
-	        return false;
+        if (userNumRow < 0 || userNumRow >= this.numRows){
+            return false;
         } else if (userNumCol < 0 || userNumCol >= this.numCols){
-	        return false;
+            return false;
         }
-	    //TO-DO: Add logic for newTile being something we don't want? Overkill?
-	    this.boardSpace[userNumRow][userNumCol] = newTile;
-	    return true;
+        //TO-DO: Add logic for newTile being something we don't want? Overkill?
+        this.boardSpace[userNumRow][userNumCol] = newTile;
+        return true;
     }
 
     public int getTile(int userNumRow, int userNumCol){
@@ -49,7 +49,9 @@ public class Board{
         }
         return this.boardSpace[userNumRow][userNumCol];
     }
+
     public int[][] getBoard(){
         return this.boardSpace;
     }
+
 }

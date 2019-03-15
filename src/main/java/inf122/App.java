@@ -7,10 +7,6 @@ import inf122.savage.plugins.TicTacToe;
 import javafx.application.Application;
 
 
-/**
- * Hello world!
- *
- */
 public class App
 {
 

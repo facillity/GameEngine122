@@ -31,10 +31,10 @@ public abstract class BaseGame implements GamePlugin{
 	}
 
 	/**
-	  * Default method just gives you class name 
-	  * i.e. "BaseGame"
-	  * Changing this value will change what the JSON is indexed by.
-	  */
+	 * Default method just gives you class name
+	 * i.e. "BaseGame"
+	 * Changing this value will change what the JSON is indexed by.
+	 */
 	@Override
 	public String getName(){
 		return this.getClass().getSimpleName();
@@ -49,19 +49,18 @@ public abstract class BaseGame implements GamePlugin{
 	}
 
 	/**
-	  * Default method for getting the current player
-	  * This is likely not to be changed.
-	  */
-	 @Override
-	 public Player currentPlayer(){
-	 	return this.state.getCurrentPlayer();
-	 }
+	 * Default method for getting the current player
+	 * This is likely not to be changed.
+	 */
+	@Override
+	public Player currentPlayer(){
+		return this.state.getCurrentPlayer();
+	}
 
 
-	 @Override
+	@Override
 	public int getWinner() {
-		 return this.winner;
-	 }
-
+		return this.winner;
+	}
 
 }
