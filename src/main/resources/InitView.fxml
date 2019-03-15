@@ -12,7 +12,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inf122.Controller">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inf122.gui.SavageController">
   <children>
     <MenuBar prefHeight="29.0" prefWidth="555.0" VBox.vgrow="NEVER">
       <menus>
@@ -31,7 +31,11 @@
         </Menu>
       </menus>
     </MenuBar>
+<<<<<<< HEAD
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="404.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+=======
+    <AnchorPane fx:id="btnslist" maxHeight="-1.0" maxWidth="-1.0" prefHeight="371.0" prefWidth="532.0" VBox.vgrow="ALWAYS">
+>>>>>>> gui refactor in package
          <children>
             <Text fill="#ff614a" layoutX="69.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome! Please choose a game to play." textAlignment="CENTER">
                <font>
