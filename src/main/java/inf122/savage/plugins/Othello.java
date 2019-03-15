@@ -57,7 +57,7 @@ public class Othello extends BaseGame{
                             }
                         }
                     }
-                    validMoves.clear();
+                    //validMoves.clear();
 
 					else if(this.state.getGameBoard().getTile(row - 1, col) == oppositeTile) { // move up
 
