@@ -1,28 +1,22 @@
 package inf122;
 
+import inf122.gui.GameRegistry;
+import inf122.gui.Savage;
+import inf122.savage.plugins.Checkers;
+import inf122.savage.plugins.TicTacToe;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+
 
 /**
  * Hello world!
  *
  */
-public class App extends Application
+public class App
 {
-    @Override
-    public void start(Stage stage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("InitView.fxml"));
-        stage.setTitle("");
-        stage.setScene(new Scene(root, 300, 285));
-        stage.show();
-
-    }
-
 
     public static void main( String[] args ){
-        launch(args);
+        GameRegistry.addGame(new TicTacToe());
+        GameRegistry.addGame(new Checkers());
+        Application.launch(Savage.class, args);
     }
 }
