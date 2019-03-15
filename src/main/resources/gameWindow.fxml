@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <SplitPane dividerPositions="0.29797979797979796" layoutX="29.0" layoutY="14.0" prefHeight="371.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <SplitPane dividerPositions="0.5" layoutX="13.0" layoutY="47.0" orientation="VERTICAL" prefHeight="369.0" prefWidth="186.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ffdec9;">
+                                 <children>
+                                    <Text fx:id="player1Name" fill="#ff6c28" layoutX="11.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1 Name" wrappingWidth="162.9912109375">
+                                       <font>
+                                          <Font name="Courier" size="17.0" />
+                                       </font></Text>
+                                    <Text fill="#727272" layoutX="11.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wins: " wrappingWidth="162.9912109375">
+                                       <font>
+                                          <Font name="Courier" size="17.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="player1Wins" fill="#727272" layoutX="68.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" wrappingWidth="77.9912109375">
+                                       <font>
+                                          <Font name="Courier" size="17.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ffdec9;">
+                                 <children>
+                                    <Text fx:id="player2Name" fill="#ff6c28" layoutX="11.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2 Name" wrappingWidth="141.892578125">
+                                       <font>
+                                          <Font name="Courier" size="17.0" />
+                                       </font></Text>
+                                    <Text fill="#727272" layoutX="11.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wins: " wrappingWidth="162.9912109375">
+                                       <font>
+                                          <Font name="Courier" size="17.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="player2Wins" fill="#727272" layoutX="68.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" wrappingWidth="77.9912109375">
+                                       <font>
+                                          <Font name="Courier" size="17.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane fx:id="gameBoardArea" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+              </items>
+            </SplitPane>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>

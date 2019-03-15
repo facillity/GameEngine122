@@ -11,8 +11,8 @@ public class App
 {
 
     public static void main( String[] args ){
-        GameRegistry.addGame(new TicTacToe());
-        GameRegistry.addGame(new Checkers());
+//        GameRegistry.addGame(new TicTacToe());
+//        GameRegistry.addGame(new Checkers());
         Application.launch(Savage.class, args);
     }
 }
