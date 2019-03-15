@@ -34,4 +34,6 @@ public class Savage extends Application {
         primaryStage.setScene(new Scene(root, 300, 285));
         primaryStage.show();
     }
+
+
 }
