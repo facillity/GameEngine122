@@ -1,6 +1,5 @@
 package inf122.gui;
 
-import inf122.savage.plugins.GamePlugin;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,10 +23,6 @@ public class Savage extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("InitView.fxml"));
         Parent root = loader.load();
         SavageController controller = loader.getController();
-
-        for(GamePlugin g : GameRegistry.getGames()){
-            controller.addGame(g);
-        }
 
 
         primaryStage.setTitle("");

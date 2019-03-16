@@ -1,6 +1,7 @@
-package inf122.savage.plugins;
+package inf122;
 
 import inf122.savage.engine.Board;
+import inf122.savage.plugins.BaseGame;
 import inf122.savage.util.Coordinate;
 
 

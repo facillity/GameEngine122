@@ -3,12 +3,12 @@ package inf122.savage.plugins;
 import inf122.savage.engine.*;
 import inf122.savage.util.PlayerFactory;
 
-public abstract class BaseGame implements GamePlugin{
+public abstract class BaseGame {
 	protected GameState state;
 	protected int winner = GAME_NOT_OVER;
 
-	public static final int DEFAULT_NUM_ROWS = 3;
-	public static final int DEFAULT_NUM_COLS = 3;
+	public static final int DEFAULT_NUM_ROWS = 8;
+	public static final int DEFAULT_NUM_COLS = 8;
 	public static final int TIE = 2;
 	public static final int GAME_NOT_OVER = 3;
 
@@ -35,20 +35,7 @@ public abstract class BaseGame implements GamePlugin{
 		this.state = new GameState(p1, p2, row, col);
 	}
 
-	/**
-	 * Default method just gives you class name
-	 * i.e. "BaseGame"
-	 * Changing this value will change what the JSON is indexed by.
-	 */
-	@Override
-	public String getName(){
-		return this.getClass().getSimpleName();
-	}
 
-	@Override
-	public abstract boolean move(int row, int col);
-
-	@Override
 	public Player getWinningPlayer(){
 		return this.state.getPlayer(this.winner);
 	}
@@ -62,16 +49,29 @@ public abstract class BaseGame implements GamePlugin{
 	}
 
 	/**
-	  * Default method for getting the current player
-	  * This is likely not to be changed.
-	  */
-	@Override
+	 * Default method for getting the current player
+	 * This is likely not to be changed.
+	 */
 	public Player currentPlayer(){
 		return this.state.getCurrentPlayer();
 	}
 
-	@Override
 	public int getWinner() {
-		 return this.winner;
-	 }
+		return this.winner;
+	}
+
+	/**
+	 * Default method just gives you class name
+	 * i.e. "BaseGame"
+	 * Changing this value will change what the JSON is indexed by.
+	 */
+	public String getName(){
+		return this.getClass().getSimpleName();
+	}
+
+	public GameState getState(){
+		return this.state;
+	}
+
+	public abstract boolean move(int row, int col);
 }

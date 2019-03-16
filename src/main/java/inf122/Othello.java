@@ -1,9 +1,11 @@
-package inf122.savage.plugins;
+package inf122;
 import inf122.savage.engine.Board;
+import inf122.savage.plugins.BaseGame;
+
 import java.util.HashSet;
 import java.util.ArrayList;
 
-public class Othello extends BaseGame{
+public class Othello extends BaseGame {
 
     private static final int NUM_ROWS = 8;
     private static final int NUM_COLS = 8;

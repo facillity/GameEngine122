@@ -1,6 +1,7 @@
-package inf122.savage.plugins;
+package inf122;
 
 import inf122.savage.engine.Board;
+import inf122.savage.plugins.BaseGame;
 
 public class TicTacToe extends BaseGame {
     public static final int NUM_ROWS = 3;

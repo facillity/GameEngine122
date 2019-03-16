@@ -1,5 +1,6 @@
 package inf122.savage.plugins;
 
+import inf122.TicTacToeView;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -1,4 +1,4 @@
-package inf122.savage.plugins;
+package inf122;
 
 import inf122.savage.engine.Board;
 
@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import inf122.savage.engine.Player;
+import inf122.savage.plugins.BaseGame;
 import javafx.util.Pair;
 
-public class Battleship extends BaseGame{
+public class Battleship extends BaseGame {
     private static final int NUM_ROWS = 18;
     private static final int NUM_COLS = 9;
 
