@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class BaseView extends AnchorPane implements Initializable {
+public abstract class BaseView extends AnchorPane implements Initializable {
     private AnchorPane board;
     private GridPane grid;
     public BaseView(AnchorPane board, BaseGame game, BaseController controller){
@@ -31,6 +31,7 @@ public class BaseView extends AnchorPane implements Initializable {
         board.getChildren().add(grid);
     }
 
+    public abstract void draw(BaseGame game, AnchorPane board);
 
     @Override
     public void initialize(URL url, ResourceBundle rb){

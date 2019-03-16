@@ -31,7 +31,7 @@ public class BaseController implements EventHandler<MouseEvent> {
 
         Parent root = loader.load();
 
-        view = new BaseView(gameBoard, this.model, this);
+        view = new TicTacToeView(gameBoard, this.model, this);
 
 
         Stage stage = new Stage();
@@ -54,6 +54,7 @@ public class BaseController implements EventHandler<MouseEvent> {
         System.out.println(row + "." + col);
         if (this.model.move(row, col)){
             System.out.println("Was a valid move");
+            this.view.draw(this.model, this.gameBoard);
         } else {
             System.out.println("Not a valid move");
         }
