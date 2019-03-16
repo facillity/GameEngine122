@@ -5,11 +5,14 @@ public class GameState{
     private int currentPlayer;
     private Board gameBoard;
 
+    public static final int PLAYER_ONE = 1;
+    public static final int PLAYER_TWO = 2;
+
     public GameState(Player p1, Player p2, Board board){
         this.players = new Player[2];
         this.players[0] = p1;
         this.players[1] = p2;
-        this.currentPlayer = 1;
+        this.currentPlayer = PLAYER_ONE;
         this.gameBoard = board;
     }
 
@@ -17,19 +20,19 @@ public class GameState{
         this.players = new Player[2];
         this.players[0] = p1;
         this.players[1] = p2;
-        this.currentPlayer = 0;
+        this.currentPlayer = PLAYER_ONE;
         makeBoard(numRows, numCols);
     }
 
     public boolean reset(){
-        this.currentPlayer = 0;
+        this.currentPlayer = PLAYER_ONE;
         this.gameBoard.zeroOutBoard();
 
         return true;
     }
 
     public boolean switchPlayer(){
-        this.currentPlayer = (this.currentPlayer == 1) ? 2 : 1;
+        this.currentPlayer = (this.currentPlayer == PLAYER_ONE) ? PLAYER_TWO : PLAYER_ONE;
         return true;
     }
 

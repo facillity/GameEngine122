@@ -3,8 +3,8 @@ package inf122.savage.plugins;
 import inf122.savage.engine.Board;
 
 public class TicTacToe extends BaseGame {
-    private static final int NUM_ROWS = 3;
-    private static final int NUM_COLS = 3;
+    public static final int NUM_ROWS = 3;
+    public static final int NUM_COLS = 3;
 
     public TicTacToe(){
         super(NUM_ROWS, NUM_COLS);

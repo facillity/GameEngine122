@@ -6,14 +6,14 @@ import inf122.savage.util.PlayerFactory;
 public abstract class BaseGame implements GamePlugin{
 	protected GameState state;
 	protected int winner = GAME_NOT_OVER;
-	private static final int DEFAULT_NUM_ROWS = 3;
-	private static final int DEFAULT_NUM_COLS = 3;
 
+	public static final int NUM_ROWS = 3;
+	public static final int NUM_COLS = 3;
 	public static final int TIE = 2;
 	public static final int GAME_NOT_OVER = 3;
 
 	public BaseGame(){
-		this(DEFAULT_NUM_ROWS, DEFAULT_NUM_COLS);
+		this(NUM_ROWS, NUM_COLS);
 	}
 
 	public BaseGame(int row, int col){
@@ -52,15 +52,15 @@ public abstract class BaseGame implements GamePlugin{
 	  * Default method for getting the current player
 	  * This is likely not to be changed.
 	  */
-	 @Override
-	 public Player currentPlayer(){
-	 	return this.state.getCurrentPlayer();
-	 }
+	@Override
+	public Player currentPlayer(){
+		return this.state.getCurrentPlayer();
+	}
 
-
-	 @Override
+	@Override
 	public int getWinner() {
 		 return this.winner;
 	 }
+
 
 }
