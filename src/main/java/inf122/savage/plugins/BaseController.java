@@ -44,7 +44,18 @@ public class BaseController implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent e){
-        System.out.println(((Node) e.getSource()).getId());
-        // Can get canvas and draw on it now.
+        // Can get canvas and draw on it now too.
+        // But at the very least, make the move?
+
+        String id = ((Node) e.getSource()).getId();
+        int index = id.indexOf(";");
+        int row = Integer.parseInt(id.substring(0, index));
+        int col = Integer.parseInt(id.substring(index + 1, id.length()));
+        System.out.println(row + "." + col);
+        if (this.model.move(row, col)){
+            System.out.println("Was a valid move");
+        } else {
+            System.out.println("Not a valid move");
+        }
     }
 }
