@@ -7,6 +7,7 @@ import java.util.Map;
 
 import inf122.savage.engine.Player;
 import inf122.savage.plugins.BaseGame;
+import inf122.savage.plugins.BaseView;
 import javafx.util.Pair;
 
 public class Battleship extends BaseGame {
@@ -258,5 +259,10 @@ public class Battleship extends BaseGame {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public Class<? extends BaseView> getViewClass(){
+        return BaseView.class;
     }
 }

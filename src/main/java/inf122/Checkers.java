@@ -2,6 +2,7 @@ package inf122;
 
 import inf122.savage.engine.Board;
 import inf122.savage.plugins.BaseGame;
+import inf122.savage.plugins.BaseView;
 import inf122.savage.util.Coordinate;
 
 
@@ -116,4 +117,8 @@ public class Checkers extends BaseGame {
         }
     }
 
+    @Override
+    public Class<? extends BaseView> getViewClass(){
+        return BaseView.class;
+    }
 }

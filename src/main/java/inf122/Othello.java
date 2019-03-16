@@ -1,6 +1,7 @@
 package inf122;
 import inf122.savage.engine.Board;
 import inf122.savage.plugins.BaseGame;
+import inf122.savage.plugins.BaseView;
 
 import java.util.HashSet;
 import java.util.ArrayList;
@@ -93,6 +94,11 @@ public class Othello extends BaseGame {
             }
         }
         return moveList;
+    }
+
+    @Override
+    public Class<? extends BaseView> getViewClass(){
+        return BaseView.class;
     }
 
 }

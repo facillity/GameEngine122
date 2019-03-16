@@ -31,7 +31,11 @@ public abstract class BaseView extends AnchorPane implements Initializable {
         board.getChildren().add(grid);
     }
 
-    public abstract void draw(BaseGame game, AnchorPane board);
+    public AnchorPane getBoard(){
+        return this.board;
+    }
+
+    public abstract void draw(BaseGame game);
 
     @Override
     public void initialize(URL url, ResourceBundle rb){

@@ -74,4 +74,6 @@ public abstract class BaseGame {
 	}
 
 	public abstract boolean move(int row, int col);
+
+	public abstract Class<? extends BaseView> getViewClass();
 }

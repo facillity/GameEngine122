@@ -29,16 +29,13 @@ public class BaseController implements EventHandler<MouseEvent> {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("tictactoe.fxml"));
         loader.setController(this);
 
-
         Parent root = loader.load();
-
-        view = new TicTacToeView(gameBoard, this.model, this);
-
+        view = ViewComponentGenerator.getViewComponent(gameBoard, model, this);
 
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setOpacity(1);
-        stage.setTitle("Base Game");
+        stage.setTitle(this.model.getName());
         stage.setScene(new Scene(root, 450, 450));
         stage.show();
     }
@@ -55,7 +52,7 @@ public class BaseController implements EventHandler<MouseEvent> {
         System.out.println(row + "." + col);
         if (this.model.move(row, col)){
             System.out.println("Was a valid move");
-            this.view.draw(this.model, this.gameBoard);
+            this.view.draw(this.model);
         } else {
             System.out.println("Not a valid move");
         }

@@ -2,6 +2,7 @@ package inf122;
 
 import inf122.savage.engine.Board;
 import inf122.savage.plugins.BaseGame;
+import inf122.savage.plugins.BaseView;
 
 public class TicTacToe extends BaseGame {
     public static final int NUM_ROWS = 3;
@@ -111,4 +112,8 @@ public class TicTacToe extends BaseGame {
         return false;
     }
 
+    @Override
+    public Class<? extends BaseView> getViewClass(){
+        return TicTacToeView.class;
+    }
 }
