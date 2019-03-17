@@ -17,13 +17,9 @@ public class SavageController {
         String gameName = ((Control)event.getSource()).getId();
         System.out.println(gameName);
 
-        //create new scene from class factory gives
-//        BaseController controller = GameFactory.createGame(gameName);
-//        controller.show();
-////
-        BaseController controller = new BaseController(new TicTacToe());
-        controller.show();
+        BaseController controller = GameFactory.createGame(gameName, "Player 1", "Player 2");
 
+        controller.show();
     }
 
 

@@ -1,5 +1,7 @@
 package inf122.gui;
 
+import inf122.TicTacToe;
+import inf122.savage.util.GameFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +14,9 @@ public class Savage extends Application {
 
     @Override
     public void init() throws Exception {
-        System.out.println("Hello World");
+        GameFactory.registerGame("tictactoe", TicTacToe.class);
+        //Will register other games like this too.
+        //The string is the ID you use for the buttons in the FXML.
     }
 
 

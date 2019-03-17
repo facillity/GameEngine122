@@ -15,6 +15,7 @@ public class TicTacToeView extends BaseView {
     }
 
     public void draw(BaseGame game){
+        super.draw(game);
         System.out.println("Drawing");
         for(int r=0; r<game.getNumRows(); r++){
             for(int c=0; c<game.getNumCols(); c++){

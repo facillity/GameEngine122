@@ -1,5 +1,6 @@
 package inf122.savage.plugins;
 
+import inf122.savage.engine.GameState;
 import inf122.savage.engine.Player;
 import inf122.savage.util.ViewComponentGenerator;
 import javafx.event.EventHandler;
