@@ -1,6 +1,7 @@
 package inf122.savage.plugins;
 
-import inf122.TicTacToeView;
+import inf122.savage.engine.Player;
+import inf122.savage.util.ViewComponentGenerator;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -55,6 +56,12 @@ public class BaseController implements EventHandler<MouseEvent> {
             this.view.draw(this.model);
         } else {
             System.out.println("Not a valid move");
+        }
+
+        if(this.model.getWinner() == BaseGame.GAME_NOT_OVER){
+            // Game is not over
+        } else if (this.model.getWinner() == BaseGame.TIE){
+            // Tie game.
         }
     }
 }

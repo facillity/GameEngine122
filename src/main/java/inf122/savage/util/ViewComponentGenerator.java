@@ -1,5 +1,8 @@
-package inf122.savage.plugins;
+package inf122.savage.util;
 
+import inf122.savage.plugins.BaseController;
+import inf122.savage.plugins.BaseGame;
+import inf122.savage.plugins.BaseView;
 import javafx.scene.layout.AnchorPane;
 
 import java.lang.reflect.InvocationTargetException;
