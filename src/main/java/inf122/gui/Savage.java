@@ -1,5 +1,8 @@
 package inf122.gui;
 
+import inf122.Battleship;
+import inf122.Checkers;
+import inf122.Othello;
 import inf122.TicTacToe;
 import inf122.savage.util.GameFactory;
 import javafx.application.Application;
@@ -15,8 +18,9 @@ public class Savage extends Application {
     @Override
     public void init() throws Exception {
         GameFactory.registerGame("tictactoe", TicTacToe.class);
-        //Will register other games like this too.
-        //The string is the ID you use for the buttons in the FXML.
+        GameFactory.registerGame("othello", Othello.class);
+        GameFactory.registerGame("battleship", Battleship.class);
+        GameFactory.registerGame("checkers", Checkers.class);
     }
 
 

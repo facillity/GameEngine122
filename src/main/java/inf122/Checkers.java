@@ -7,18 +7,24 @@ import inf122.savage.util.Coordinate;
 
 
 public class Checkers extends BaseGame {
-    private static final int NUM_ROWS = 8;
-    private static final int NUM_COLS = 8;
-    private Coordinate selected;
+    private static final int NUM_ROWS = 10;
+    private static final int NUM_COLS = 10;
+    private Coordinate selected = new Coordinate(-1, -1);
 
     public Checkers(){
         super(NUM_ROWS, NUM_COLS);
+        this.createStartingBoard();
     }
 
     public Checkers(String p1, String p2){
         super(NUM_ROWS, NUM_COLS, p1, p2);
+        this.createStartingBoard();
     }
 
+
+    public Coordinate getSelected(){
+        return this.selected;
+    }
 
     /**
      * Attempts to make a move at this location. Moves in Checkers are two-phased:
@@ -37,7 +43,7 @@ public class Checkers extends BaseGame {
             return true;
         }
 
-        if(this.selected != null){
+        if(this.selected.getRow() != -1){
             if(tile == Board.EMPTY){
                 int rowDiff = row - this.selected.getRow();
                 int colDiff = col - this.selected.getCol();
@@ -49,9 +55,13 @@ public class Checkers extends BaseGame {
                     return true;
                 }
                 if(Math.abs(rowDiff) == 2 && Math.abs(colDiff) == 2){
+
                     //Check the piece in between and consider if there is an enemy piece.
-                    int dr = (rowDiff > 0) ? -1 : +1;
-                    int dc = (colDiff > 0) ? -1 : +1;
+
+                    int dr = (rowDiff > 0) ? 1 : -1;
+                    int dc = (colDiff > 0) ? 1 : -1;
+                    System.out.println(dr + ":" + dc);
+
                     int between = this.state.getGameBoard().getTile(this.selected.getRow() + dr, this.selected.getCol() + dc);
                     if(between != Board.EMPTY && between != this.state.getCurrentPlayerInt()){
                         // Valid move!
@@ -69,22 +79,21 @@ public class Checkers extends BaseGame {
         return false;
     }
 
-
     /**
      * Determines a list of valid moves (empty spaces) with taking enemy space.
      * @param pos position of selected tile (current player's piece)
      * @return true if the user can play another move
      */
     private boolean canJump(Coordinate pos){
-        int[] vals = {+1, -1};
-        for(int r : vals){
-            for(int c : vals){
-                int tile = this.state.getGameBoard().getTile(pos.getRow() + r, pos.getCol() + c);
-                if(tile != Board.EMPTY && tile != this.state.getCurrentPlayerInt()){
-                    return true;
-                }
-            }
-        }
+//        int[] vals = {+1, -1};
+//        for(int r : vals){
+//            for(int c : vals){
+//                int tile = this.state.getGameBoard().getTile(pos.getRow() + r, pos.getCol() + c);
+//                if(tile != Board.EMPTY && tile != this.state.getCurrentPlayerInt()){
+//                    return true;
+//                }
+//            }
+//        }
 
         return false;
     }
@@ -117,8 +126,24 @@ public class Checkers extends BaseGame {
         }
     }
 
+    private void createStartingBoard(){
+        for(int r=0; r<this.getNumRows(); r++){
+            for(int c=0; c<this.getNumCols(); c++){
+                int piece = 0;
+                if(r < 4){
+                    piece = state.PLAYER_ONE;
+                }else if(r > 5){
+                    piece = state.PLAYER_TWO;
+                }
+                if((r + c) % 2 == 1){
+                    state.getGameBoard().change(r, c, piece);
+                }
+            }
+        }
+    }
+
     @Override
     public Class<? extends BaseView> getViewClass(){
-        return BaseView.class;
+        return CheckersView.class;
     }
 }

@@ -12,6 +12,10 @@ public class Coordinate {
         this.col = c;
     }
 
+    public boolean isValid(){
+        return ((this.row > 0) && (this.col > 0));
+    }
+
     public int getRow(){
         return this.row;
     }
