@@ -1,19 +1,11 @@
 package inf122.savage.plugins;
 
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.geometry.*;
-import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import static javafx.geometry.VPos.CENTER;
 
 public abstract class BaseView extends AnchorPane implements Initializable {
     private AnchorPane board;
