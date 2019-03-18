@@ -10,11 +10,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 public class OthelloView extends BaseView {
-    public OthelloView(AnchorPane board, BaseGame game, BaseController controller){
-        super(board, game, controller);
+    final Color CELL_BG_COLOR = Color.ORANGE;
+
+    public OthelloView(AnchorPane board, BaseGame game, BaseController controller){ super(board, game, controller);
     }
 
     public void draw(BaseGame game){
+
+
         System.out.println("Drawing");
         this.resetBoard(game);
 
@@ -22,13 +25,14 @@ public class OthelloView extends BaseView {
             for(int c=0; c<game.getNumCols(); c++){
                 Canvas cell = (Canvas) this.getBoard().lookup("#" + r + ";" + c);
                 GraphicsContext gc = cell.getGraphicsContext2D();
+//                gc.setFill(CELL_BG_COLOR);
+
                 if(game.getState().getGameBoard().getTile(r, c) == GameState.PLAYER_ONE){
-                    gc.setStroke(Color.BLACK);
-                    gc.strokeLine(5, 5, cell.getWidth()-10, cell.getHeight()-10);
-                    gc.strokeLine(cell.getWidth()-10, 5, 5, cell.getHeight()-10);
+                    gc.setFill(Color.BLACK);
+                    gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
                 }else if (game.getState().getGameBoard().getTile(r, c) == GameState.PLAYER_TWO){
-                    gc.setStroke(Color.BLACK);
-                    gc.strokeOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
+                    gc.setFill(Color.WHITE);
+                    gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
                 }
             }
         }
@@ -36,6 +40,19 @@ public class OthelloView extends BaseView {
 
         // Check if game is over
         // if so, make a popup or something.
+    }
+
+    public void resetBoard(BaseGame game)
+    {
+        for(int r=0; r<game.getNumRows(); r++) {
+            for (int c = 0; c < game.getNumCols(); c++) {
+                Canvas cell = (Canvas) this.getBoard().lookup("#" + r + ";" + c);
+                GraphicsContext gc = cell.getGraphicsContext2D();
+                gc.clearRect(0, 0, cell.getWidth(), cell.getHeight());
+                cell.getGraphicsContext2D().setFill(CELL_BG_COLOR);
+                cell.getGraphicsContext2D().fillRect(0, 0, cell.getWidth() - 10, cell.getHeight() - 10);
+            }
+        }
     }
 
 }
