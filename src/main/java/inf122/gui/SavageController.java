@@ -1,7 +1,6 @@
 package inf122.gui;
 
 import inf122.savage.plugins.BaseController;
-import inf122.TicTacToe;
 import inf122.savage.util.GameFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

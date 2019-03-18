@@ -1,14 +1,11 @@
 package inf122;
 
-import inf122.savage.engine.Board;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import inf122.savage.engine.Player;
 import inf122.savage.plugins.BaseGame;
 import inf122.savage.plugins.BaseView;
-import javafx.util.Pair;
 
 public class Battleship extends BaseGame {
     private static final int NUM_ROWS = 18;
@@ -263,6 +260,6 @@ public class Battleship extends BaseGame {
 
     @Override
     public Class<? extends BaseView> getViewClass(){
-        return BaseView.class;
+        return BattleshipView.class;
     }
 }
