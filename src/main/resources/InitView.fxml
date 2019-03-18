@@ -38,7 +38,7 @@
                   <Font name="Courier" size="22.0" />
                </font>
             </Text>
-            <Button fx:id="tictactoe" layoutX="165.0" layoutY="51.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="149.0" prefWidth="155.0" style="-fx-background-color: #ff6e49;" text="Tic-Tac-Toe">
+            <Button fx:id="tictactoe" layoutX="274.0" layoutY="48.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="149.0" prefWidth="155.0" style="-fx-background-color: #ff6e49;" text="Tic-Tac-Toe">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -46,7 +46,7 @@
                   <Font name="Courier Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="othello" layoutX="332.0" layoutY="51.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="149.0" prefWidth="155.0" style="-fx-background-color: #ff6e49;" text="Othello">
+            <Button fx:id="othello" layoutX="441.0" layoutY="48.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="149.0" prefWidth="155.0" style="-fx-background-color: #ff6e49;" text="Othello">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -54,7 +54,7 @@
                   <Font name="Courier Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="battleship" layoutX="165.0" layoutY="211.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="149.0" prefWidth="155.0" style="-fx-background-color: #ff6e49;" text="Battleship">
+            <Button fx:id="battleship" layoutX="274.0" layoutY="208.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="149.0" prefWidth="155.0" style="-fx-background-color: #ff6e49;" text="Battleship">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -62,7 +62,7 @@
                   <Font name="Courier Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="checkers" layoutX="332.0" layoutY="211.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="149.0" prefWidth="155.0" style="-fx-background-color: #ff6e49;" text="Checkers">
+            <Button fx:id="checkers" layoutX="441.0" layoutY="208.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="149.0" prefWidth="155.0" style="-fx-background-color: #ff6e49;" text="Checkers">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -70,6 +70,18 @@
                   <Font name="Courier Bold" size="18.0" />
                </font>
             </Button>
+            <Text layoutX="24.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1 Name:">
+               <font>
+                  <Font name="Courier" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="24.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2 Name:">
+               <font>
+                  <Font name="Courier" size="15.0" />
+               </font>
+            </Text>
+            <TextField fx:id="player1Name" onAction="#enterPlayer1Name" layoutX="24.0" layoutY="96.0" prefHeight="27.0" prefWidth="213.0" />
+            <TextField fx:id="player2Name" onAction="#enterPlayer2Name" layoutX="25.0" layoutY="170.0" prefHeight="27.0" prefWidth="213.0" />
          </children>
     </AnchorPane>
   </children>

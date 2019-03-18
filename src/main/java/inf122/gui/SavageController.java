@@ -9,9 +9,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 
 import javafx.event.EventHandler;
+import javafx.scene.control.TextField;
 
 
 public class SavageController {
+    @FXML
+    private TextField player1Name;
+
+    @FXML
+    private TextField player2Name;
+
+    private String p1Name = "player 1";
+    private String p2Name = "player 2";
+
     @FXML
     void launchGame(ActionEvent event) throws Exception {
         String gameName = ((Control)event.getSource()).getId();
@@ -21,11 +31,24 @@ public class SavageController {
 //        BaseController controller = GameFactory.createGame(gameName);
 //        controller.show();
 ////
+
+//        System.out.println("player 2 name: ");
         BaseController controller = new BaseController(new TicTacToe());
         controller.show();
 
     }
 
+    @FXML
+    void enterPlayer1Name(ActionEvent event) throws Exception
+    {
+        p1Name = player1Name.getText();
+    }
+
+    @FXML
+    void enterPlayer2Name(ActionEvent event) throws Exception
+    {
+        p2Name = player2Name.getText();
+    }
 
 
 }

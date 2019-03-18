@@ -8,6 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -23,21 +26,21 @@ public class BaseController implements EventHandler<MouseEvent> {
 
     @FXML
     AnchorPane gameBoard;
-
+    Stage stage = new Stage();
 
 
     public void show() throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("tictactoe.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("gameView.fxml"));
         loader.setController(this);
 
         Parent root = loader.load();
         view = ViewComponentGenerator.getViewComponent(gameBoard, model, this);
 
-        Stage stage = new Stage();
+
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setOpacity(1);
         stage.setTitle(this.model.getName());
-        stage.setScene(new Scene(root, 450, 450));
+        stage.setScene(new Scene(root, 600, 450));
         stage.show();
     }
 
@@ -58,10 +61,44 @@ public class BaseController implements EventHandler<MouseEvent> {
             System.out.println("Not a valid move");
         }
 
-        if(this.model.getWinner() == BaseGame.GAME_NOT_OVER){
+        if(this.model.getWinner() == BaseGame.GAME_NOT_OVER)
+        {
+            System.out.println("here");
             // Game is not over
-        } else if (this.model.getWinner() == BaseGame.TIE){
-            // Tie game.
+        }
+        else if (this.model.getWinner() == 1 )
+        {
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Game Over!");
+            alert.setHeaderText(this.model.getWinningPlayer().getName() + " wins!");
+            alert.setContentText("Play again?");
+
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.OK)
+            {
+               this.model.resetGame();
+               this.view.resetBoard(this.model);
+            }
+            else
+            {
+                this.stage.close();
+            }
+        }
+        else if (this.model.getWinner() == BaseGame.TIE){
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Game Over!");
+        alert.setHeaderText("It's a tie!");
+        alert.setContentText("Play again?");
+
+        alert.showAndWait();
+        if (alert.getResult() == ButtonType.OK)
+        {
+            this.model.resetGame();
+            this.view.resetBoard(this.model);
+        }
+        else
+        {
+            this.stage.close();
         }
     }
-}
+}}

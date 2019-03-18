@@ -73,6 +73,15 @@ public abstract class BaseGame {
 		return this.state;
 	}
 
+	public boolean resetGame(){
+		this.state.currentPlayer = this.state.PLAYER_ONE;
+		this.state.gameBoard.zeroOutBoard();
+
+		this.winner = GAME_NOT_OVER;
+
+		return true;
+	}
+
 	public abstract boolean move(int row, int col);
 
 	public abstract Class<? extends BaseView> getViewClass();
