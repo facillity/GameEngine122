@@ -3,11 +3,9 @@ package inf122.savage.plugins;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.*;
 
+import javafx.scene.paint.Color;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -17,17 +15,27 @@ public abstract class BaseView extends AnchorPane implements Initializable {
     private GridPane grid;
     private BaseController controller;
 
+    double cellWidth;
+    double cellHeight;
+
     public BaseView(AnchorPane board, BaseGame game, BaseController controller){
         this.board = board;
         this.controller = controller;
+
+        board.setPrefWidth(600);
+        board.setPrefHeight(600);
+
         grid = new GridPane();
 
+        cellWidth = board.getPrefWidth() / game.getNumCols();
+        cellHeight = board.getPrefHeight() / game.getNumRows();
 
-        for(int r=0; r<game.getNumRows(); r++){
-            for(int c=0; c<game.getNumCols(); c++){
-                Canvas cell = new Canvas(100, 100);
+        for(int r=0; r<game.getNumRows(); r++) {
+            for (int c = 0; c < game.getNumCols(); c++) {
+                Canvas cell = new Canvas(cellWidth, cellHeight);
                 cell.getGraphicsContext2D().setFill(Color.rgb(241, 220, 212));
-                cell.getGraphicsContext2D().fillRect(0, 0, 90, 90);
+                cell.getGraphicsContext2D().fillRect(0, 0, cellWidth - 10, cellHeight - 10);
+
                 cell.setId(r + ";" + c);
                 cell.setOnMouseClicked(controller);
                 grid.add(cell, c, r);
@@ -48,7 +56,7 @@ public abstract class BaseView extends AnchorPane implements Initializable {
                 GraphicsContext gc = cell.getGraphicsContext2D();
                 gc.clearRect(0, 0, cell.getWidth(), cell.getHeight());
                 cell.getGraphicsContext2D().setFill(Color.rgb(241, 220, 212));
-                cell.getGraphicsContext2D().fillRect(0, 0, 90, 90);
+                cell.getGraphicsContext2D().fillRect(0, 0, cellWidth - 10, cellHeight - 10);
             }
         }
     }

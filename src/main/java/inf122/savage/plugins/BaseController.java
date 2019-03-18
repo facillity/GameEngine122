@@ -36,11 +36,14 @@ public class BaseController implements EventHandler<MouseEvent> {
         Parent root = loader.load();
         view = ViewComponentGenerator.getViewComponent(gameBoard, model, this);
 
-
+        Stage stage = new Stage();
+        stage.setResizable(false);
+        
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setOpacity(1);
         stage.setTitle(this.model.getName());
-        stage.setScene(new Scene(root, 600, 450));
+        stage.setScene(new Scene(root, 860, 630));
+
         stage.show();
     }
 
