@@ -66,6 +66,7 @@ public abstract class BaseView extends AnchorPane implements Initializable {
                 cell.getGraphicsContext2D().fillRect(0, 0, cellWidth - 10, cellHeight - 10);
             }
         }
+        this.draw(game);
     }
 
 
