@@ -24,7 +24,7 @@ public abstract class BaseView extends AnchorPane implements Initializable {
             for (int c = 0; c < game.getNumCols(); c++) {
                 Canvas cell = new Canvas(cellWidth, cellHeight);
                 cell.getGraphicsContext2D().setFill(Color.BLUE);
-                cell.getGraphicsContext2D().fillRect(0, 0, cellWidth - 10, cellHeight - 10);
+                cell.getGraphicsContext2D().fillRect(5, 5, cellWidth - 10, cellHeight - 10);
                 cell.setId(r + ";" + c);
                 cell.setOnMouseClicked(controller);
                 grid.add(cell, c, r);

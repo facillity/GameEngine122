@@ -29,16 +29,21 @@ public class CheckersView extends BaseView {
             for(int c=0; c<game.getNumCols(); c++){
                 Canvas cell = (Canvas) this.getBoard().lookup("#" + r + ";" + c);
                 GraphicsContext gc = cell.getGraphicsContext2D();
+                gc.setFill(Color.BLUE);
+
+                if(r != selected.getRow() && c != selected.getCol())
+                    gc.fillRect(5, 5, cell.getWidth()-10, cell.getHeight()-10);
+
 
                 if(game.getState().getGameBoard().getTile(r, c) == game.getState().PLAYER_ONE){
                     gc.setFill(Color.BLACK);
+                    gc.fillOval(10, 10, cell.getWidth()-20, cell.getHeight()-20);
                 }else if(game.getState().getGameBoard().getTile(r, c) == game.getState().PLAYER_TWO){
                     gc.setFill(Color.RED);
+                    gc.fillOval(10, 10, cell.getWidth()-20, cell.getHeight()-20);
                 }else{
-                    gc.setFill(Color.BLUE);
+                    gc.fillRect(5, 5, cell.getWidth()-10, cell.getHeight()-10);
                 }
-
-                gc.fillOval(5, 5, cell.getWidth()-20, cell.getHeight()-20);
             }
         }
     }
@@ -49,6 +54,6 @@ public class CheckersView extends BaseView {
         gc.setFill(Color.YELLOW);
         gc.setStroke(Color.YELLOW);
         gc.setLineWidth(3);
-        gc.strokeRect(5, 5, cell.getWidth()-20, cell.getHeight()-20);
+        gc.strokeRect(10, 10, cell.getWidth()-20, cell.getHeight()-20);
     }
 }
