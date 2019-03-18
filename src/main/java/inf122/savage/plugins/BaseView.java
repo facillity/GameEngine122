@@ -27,6 +27,7 @@ public abstract class BaseView extends AnchorPane implements Initializable {
 
         grid = new GridPane();
 
+
         cellWidth = board.getPrefWidth() / game.getNumCols();
         cellHeight = board.getPrefHeight() / game.getNumRows();
 
