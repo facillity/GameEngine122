@@ -21,13 +21,12 @@ public class Board{
 		zeroOutBoard();
 	}
 
-	public boolean zeroOutBoard(){
+	public void zeroOutBoard(){
 		for (int x = 0; x < numRows; x++){
 			for (int y = 0; y < numCols; y++){
 				boardSpace[x][y] = 0;
 			}
 		}
-		return true;
 	}
 
 	public boolean change(int userNumRow, int userNumCol, int newTile){
@@ -36,7 +35,6 @@ public class Board{
 		} else if (userNumCol < 0 || userNumCol >= this.numCols){
 			return false;
 		}
-		//TO-DO: Add logic for newTile being something we don't want? Overkill?
 		this.boardSpace[userNumRow][userNumCol] = newTile;
 		return true;
 	}

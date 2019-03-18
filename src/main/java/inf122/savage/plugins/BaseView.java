@@ -13,22 +13,19 @@ import java.util.ResourceBundle;
 public abstract class BaseView extends AnchorPane implements Initializable {
 
     private AnchorPane board;
-    private GridPane grid;
-    private BaseController controller;
 
     public static final Color BG_COLOR = Color.rgb(241, 220, 212);
 
-    double cellWidth;
-    double cellHeight;
+    private double cellWidth;
+    private double cellHeight;
 
     public BaseView(AnchorPane board, BaseGame game, BaseController controller){
         this.board = board;
-        this.controller = controller;
 
         board.setPrefWidth(600);
         board.setPrefHeight(600);
 
-        grid = new GridPane();
+        GridPane grid = new GridPane();
 
 
         cellWidth = board.getPrefWidth() / game.getNumCols();

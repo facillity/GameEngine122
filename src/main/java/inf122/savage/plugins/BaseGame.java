@@ -9,15 +9,16 @@ public abstract class BaseGame {
 	protected GameState state;
 	protected int winner = GAME_NOT_OVER;
 
-	public static final int DEFAULT_NUM_ROWS = 8;
-	public static final int DEFAULT_NUM_COLS = 8;
+	private static final int DEFAULT_NUM_ROWS = 8;
+	private static final int DEFAULT_NUM_COLS = 8;
+
 	public static final int PLAYER_ONE = 1;
 	public static final int PLAYER_TWO = 2;
 	public static final int TIE = 2;
 	public static final int GAME_NOT_OVER = 3;
 
-	private int numRows = DEFAULT_NUM_ROWS;
-	private int numCols = DEFAULT_NUM_COLS;
+	private int numRows;
+	private int numCols;
 
 	public BaseGame(){
 		this(DEFAULT_NUM_ROWS, DEFAULT_NUM_COLS);
@@ -77,7 +78,7 @@ public abstract class BaseGame {
 		return this.state;
 	}
 
-	public boolean resetGame(){
+	public void resetGame(){
 		this.state.currentPlayer = PLAYER_ONE;
 		this.state.gameBoard.zeroOutBoard();
 		if(this.winner < TIE){
@@ -88,8 +89,6 @@ public abstract class BaseGame {
 
 
 		this.winner = GAME_NOT_OVER;
-
-		return true;
 	}
 
 	public abstract boolean move(int row, int col);

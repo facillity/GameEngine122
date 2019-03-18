@@ -23,26 +23,15 @@ public class GameState{
         this.currentPlayer = PLAYER_ONE;
         makeBoard(numRows, numCols);
     }
-//
-//    public boolean reset(){
-//        this.currentPlayer = PLAYER_ONE;
-//        this.gameBoard.zeroOutBoard();
-//
-//
-//        return true;
-//    }
 
-    public boolean switchPlayer(){
+    public void switchPlayer(){
         this.currentPlayer = (this.currentPlayer == PLAYER_ONE) ? PLAYER_TWO : PLAYER_ONE;
-        return true;
     }
 
-    private boolean makeBoard(int rowCount, int colCount){
-        if (rowCount <= 0 || colCount <= 0){
-            return false;
+    private void makeBoard(int rowCount, int colCount){
+        if (!(rowCount <= 0 && colCount <= 0)){
+            this.gameBoard = new Board(rowCount, colCount);
         }
-        this.gameBoard = new Board(rowCount, colCount);
-        return true;
     }
 
     public int getCurrentPlayerInt(){
