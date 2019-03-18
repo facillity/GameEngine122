@@ -51,7 +51,7 @@ public class Checkers extends BaseGame {
                     // Valid move!
                     this.state.getGameBoard().change(row, col, this.state.getCurrentPlayerInt());
                     this.state.getGameBoard().change(selected.getRow(), selected.getCol(), Board.EMPTY);
-                    this.switchPlayer(row, col);
+                    this.switchPlayer();
                     return true;
                 }
                 if(Math.abs(rowDiff) == 2 && Math.abs(colDiff) == 2){
@@ -68,7 +68,12 @@ public class Checkers extends BaseGame {
                         this.state.getGameBoard().change(row, col, this.state.getCurrentPlayerInt());
                         this.state.getGameBoard().change(selected.getRow(), selected.getCol(), Board.EMPTY);
                         this.state.getGameBoard().change(selected.getRow() + dr, selected.getCol() + dc, Board.EMPTY);
-                        this.switchPlayer(row, col);
+                        Coordinate newPos = new Coordinate(row, col);
+                        if(canJump(newPos)){
+                            this.selected = newPos;
+                        }else{
+                            switchPlayer();
+                        }
                         return true;
                     }
                 }
@@ -85,15 +90,19 @@ public class Checkers extends BaseGame {
      * @return true if the user can play another move
      */
     private boolean canJump(Coordinate pos){
-//        int[] vals = {+1, -1};
-//        for(int r : vals){
-//            for(int c : vals){
-//                int tile = this.state.getGameBoard().getTile(pos.getRow() + r, pos.getCol() + c);
-//                if(tile != Board.EMPTY && tile != this.state.getCurrentPlayerInt()){
-//                    return true;
-//                }
-//            }
-//        }
+        int[] vals = {+1, -1};
+        for(int r : vals){
+            for(int c : vals){
+                int secondR = (r > 0)? 2 : -2;
+                int secondC = (c > 0)? 2 : -2;
+                int tile = this.state.getGameBoard().getTile(pos.getRow() + r, pos.getCol() + c);
+                int target = this.state.getGameBoard().getTile(pos.getRow() + secondR, pos.getCol() + secondC);
+                if(tile != Board.EMPTY && tile != this.state.getCurrentPlayerInt() && target == Board.EMPTY){
+                    System.out.print("Can jump again");
+                    return true;
+                }
+            }
+        }
 
         return false;
     }
@@ -119,11 +128,8 @@ public class Checkers extends BaseGame {
      * If the user can make another move (by eating another piece)
      * the turn does not change.
      */
-    private void switchPlayer(int row, int col){
-        Coordinate pos = new Coordinate(row, col);
-        if (!this.canJump(pos)){
-            this.state.switchPlayer();
-        }
+    private void switchPlayer(){
+        this.state.switchPlayer();
     }
 
     private void createStartingBoard(){
