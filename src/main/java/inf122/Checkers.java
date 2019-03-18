@@ -5,6 +5,9 @@ import inf122.savage.plugins.BaseGame;
 import inf122.savage.plugins.BaseView;
 import inf122.savage.util.Coordinate;
 
+import static inf122.savage.engine.GameState.PLAYER_ONE;
+import static inf122.savage.engine.GameState.PLAYER_TWO;
+
 
 public class Checkers extends BaseGame {
     private static final int NUM_ROWS = 10;
@@ -52,6 +55,7 @@ public class Checkers extends BaseGame {
                     this.state.getGameBoard().change(row, col, this.state.getCurrentPlayerInt());
                     this.state.getGameBoard().change(selected.getRow(), selected.getCol(), Board.EMPTY);
                     this.switchPlayer();
+                    this.checkWinner();
                     return true;
                 }
                 if(Math.abs(rowDiff) == 2 && Math.abs(colDiff) == 2){
@@ -74,6 +78,7 @@ public class Checkers extends BaseGame {
                         }else{
                             switchPlayer();
                         }
+                        this.checkWinner();
                         return true;
                     }
                 }
@@ -107,21 +112,40 @@ public class Checkers extends BaseGame {
         return false;
     }
 
+    @Override
+    public boolean resetGame(){
+        super.resetGame();
+
+        this.createStartingBoard();
+
+        return true;
+    }
+
     /**
      * Checks if there is a winner to the game.
      * If so, will update the winner.
      */
     private void checkWinner(){
+        int[][] board = getState().getGameBoard().getBoard();
+        int p1count = 0;
+        int p2count = 0;
+        for(int row = 0; row < NUM_ROWS; ++row) {
+            for(int col = 0; col < NUM_COLS; ++col) {
+                if(board[row][col] == PLAYER_ONE) {
+                    ++p1count;
+                }
+                else if(board[row][col] == PLAYER_TWO){
+                    ++p2count;
+                }
+            }
+        }
 
+        if(p1count == 0)
+            this.winner = PLAYER_ONE;
+        if(p2count == 0)
+            this.winner = PLAYER_TWO;
     }
 
-    /**
-     * Checks if the game is over
-     * @return True if game is over (and winner can be found)
-     */
-    private boolean isGameOver() {
-        return this.winner != BaseGame.GAME_NOT_OVER;
-    }
 
     /**
      * Switches the player if the move is over.
@@ -137,7 +161,7 @@ public class Checkers extends BaseGame {
             for(int c=0; c<this.getNumCols(); c++){
                 int piece = 0;
                 if(r < 4){
-                    piece = state.PLAYER_ONE;
+                    piece = PLAYER_ONE;
                 }else if(r > 5){
                     piece = state.PLAYER_TWO;
                 }

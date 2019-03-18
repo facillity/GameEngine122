@@ -23,6 +23,7 @@ public class CheckersView extends BaseView {
         }
 
 
+
         for(int r=0; r<game.getNumRows(); r++){
             for(int c=0; c<game.getNumCols(); c++){
                 Canvas cell = (Canvas) this.getBoard().lookup("#" + r + ";" + c);
@@ -31,7 +32,6 @@ public class CheckersView extends BaseView {
 
                 if(r != selected.getRow() && c != selected.getCol())
                     gc.fillRect(5, 5, cell.getWidth()-10, cell.getHeight()-10);
-
 
                 if(game.getState().getGameBoard().getTile(r, c) == game.getState().PLAYER_ONE){
                     gc.setFill(Color.BLACK);
