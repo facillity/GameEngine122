@@ -32,9 +32,8 @@ public class Savage extends Application {
         Parent root = loader.load();
         SavageController controller = loader.getController();
 
-
         primaryStage.setTitle("");
-        primaryStage.setScene(new Scene(root, 300, 285));
+        primaryStage.setScene(new Scene(root, 600, 900));
         primaryStage.show();
     }
 
