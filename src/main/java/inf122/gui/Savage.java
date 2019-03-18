@@ -26,7 +26,6 @@ public class Savage extends Application {
 
         primaryStage.setTitle("");
         primaryStage.setScene(new Scene(root, 600, 900));
-        primaryStage.setFullScreen(true);
         primaryStage.show();
     }
 

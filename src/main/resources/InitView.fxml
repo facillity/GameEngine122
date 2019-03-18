@@ -12,7 +12,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inf122.gui.SavageController">
+<VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inf122.gui.SavageController">
   <children>
     <MenuBar prefHeight="29.0" prefWidth="555.0" VBox.vgrow="NEVER">
       <menus>
@@ -31,7 +31,7 @@
         </Menu>
       </menus>
     </MenuBar>
-      <VBox alignment="TOP_CENTER" prefHeight="2000.0" prefWidth="400.0">
+      <VBox alignment="TOP_CENTER" prefHeight="2000.0" prefWidth="600.0">
          <children>
             <Text fill="#ff614a" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome! Please choose a game to play." textAlignment="CENTER">
                <font>
@@ -41,7 +41,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
                </VBox.margin>
             </Text>
-            <HBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="300.0" prefWidth="400.0">
+            <HBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="300.0" prefWidth="500.0">
                <children>
                   <Button fx:id="tictactoe" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#launchGame" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #ff6e49;" text="Tic-Tac-Toe">
                      <cursor>
@@ -70,7 +70,7 @@
                   <Insets left="30.0" right="30.0" top="30.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="400.0">
+            <HBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="500.0">
                <children>
                   <Button fx:id="battleship" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#launchGame" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #ff6e49;" text="Battleship">
                      <cursor>
