@@ -98,7 +98,7 @@ public class Othello extends BaseGame {
 
     @Override
     public Class<? extends BaseView> getViewClass(){
-        return BaseView.class;
+        return OthelloView.class;
     }
 
 }
