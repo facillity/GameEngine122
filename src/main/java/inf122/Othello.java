@@ -69,6 +69,7 @@ public class Othello extends BaseGame{
         		this.state.getGameBoard().getBoard()[coords.get(0)][coords.get(1)] = currentTile;
         	}
         }
+        this.calculateWinner();
         this.state.switchPlayer();
         return true;
 	}
@@ -88,6 +89,10 @@ public class Othello extends BaseGame{
 				}
 				else if(gameBoard[row][col] == 2){
 					++player2;
+				}
+				else if(gameBoard[row][col] == Board.EMPTY){
+					this.winner = BaseGame.GAME_NOT_OVER;
+					return;
 				}
 			}
 		}

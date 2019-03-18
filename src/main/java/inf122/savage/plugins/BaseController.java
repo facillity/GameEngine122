@@ -36,6 +36,7 @@ public class BaseController implements EventHandler<MouseEvent> {
 
         Parent root = loader.load();
         view = ViewComponentGenerator.getViewComponent(gameBoard, model, this);
+        view.draw(this.model);
 
         Stage stage = new Stage();
         stage.setResizable(false);
