@@ -1,6 +1,8 @@
 package inf122.savage.plugins;
 
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.geometry.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -10,6 +12,8 @@ import javafx.scene.paint.Color;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static javafx.geometry.VPos.CENTER;
+
 public abstract class BaseView extends AnchorPane implements Initializable {
     private AnchorPane board;
     private GridPane grid;
@@ -17,6 +21,7 @@ public abstract class BaseView extends AnchorPane implements Initializable {
         this.board = board;
         grid = new GridPane();
 
+        grid.setGridLinesVisible(true);
 
         for(int r=0; r<game.getNumRows(); r++){
             for(int c=0; c<game.getNumCols(); c++){
