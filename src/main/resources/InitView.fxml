@@ -31,7 +31,7 @@
         </Menu>
       </menus>
     </MenuBar>
-      <VBox alignment="TOP_CENTER" prefHeight="2000.0" prefWidth="600.0">
+      <VBox alignment="TOP_CENTER" prefHeight="1300.0" prefWidth="600.0">
          <children>
             <Text fill="#ff614a" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome! Please choose a game to play." textAlignment="CENTER">
                <font>
@@ -55,9 +55,9 @@
              </Text>
              <TextField fx:id="player2Name" layoutX="25.0" layoutY="170.0" onAction="#enterPlayer2Name" prefHeight="27.0" prefWidth="213.0" />
 
-            <HBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="300.0" prefWidth="500.0">
+            <HBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="500.0">
                <children>
-                  <Button fx:id="tictactoe" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#launchGame" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #ff6e49;" text="Tic-Tac-Toe">
+                  <Button fx:id="tictactoe" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#launchGame" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: #ff6e49;" text="Tic-Tac-Toe">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -68,7 +68,7 @@
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="othello" mnemonicParsing="false" onAction="#launchGame" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #ff6e49;" text="Othello">
+                  <Button fx:id="othello" mnemonicParsing="false" onAction="#launchGame" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: #ff6e49;" text="Othello">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -84,9 +84,9 @@
                   <Insets left="30.0" right="30.0" top="30.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="500.0">
+            <HBox alignment="TOP_CENTER" prefHeight="250.0" prefWidth="500.0">
                <children>
-                  <Button fx:id="battleship" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#launchGame" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #ff6e49;" text="Battleship">
+                  <Button fx:id="battleship" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#launchGame" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: #ff6e49;" text="Battleship">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -97,7 +97,7 @@
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="checkers" mnemonicParsing="false" onAction="#launchGame" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #ff6e49;" text="Checkers">
+                  <Button fx:id="checkers" mnemonicParsing="false" onAction="#launchGame" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: #ff6e49;" text="Checkers">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
