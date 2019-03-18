@@ -13,7 +13,7 @@ public class Coordinate {
     }
 
     public boolean isValid(){
-        return ((this.row > 0) && (this.col > 0));
+        return ((this.row >= 0) && (this.col >= 0));
     }
 
     public int getRow(){

@@ -41,6 +41,20 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
                </VBox.margin>
             </Text>
+
+             <Text layoutX="24.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1 Name:">
+                 <font>
+                     <Font name="Courier" size="15.0" />
+                 </font>
+             </Text>
+             <TextField fx:id="player1Name" layoutX="24.0" layoutY="96.0" onAction="#enterPlayer1Name" prefHeight="27.0" prefWidth="585.0" />
+             <Text layoutX="24.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2 Name:">
+                 <font>
+                     <Font name="Courier" size="15.0" />
+                 </font>
+             </Text>
+             <TextField fx:id="player2Name" layoutX="25.0" layoutY="170.0" onAction="#enterPlayer2Name" prefHeight="27.0" prefWidth="213.0" />
+
             <HBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="300.0" prefWidth="500.0">
                <children>
                   <Button fx:id="tictactoe" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#launchGame" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #ff6e49;" text="Tic-Tac-Toe">

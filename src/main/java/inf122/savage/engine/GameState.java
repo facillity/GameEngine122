@@ -2,8 +2,8 @@ package inf122.savage.engine;
 
 public class GameState{
     private Player[] players;
-    private int currentPlayer;
-    private Board gameBoard;
+    public int currentPlayer;
+    public Board gameBoard;
 
     public static final int PLAYER_ONE = 1;
     public static final int PLAYER_TWO = 2;
@@ -23,13 +23,14 @@ public class GameState{
         this.currentPlayer = PLAYER_ONE;
         makeBoard(numRows, numCols);
     }
-
-    public boolean reset(){
-        this.currentPlayer = PLAYER_ONE;
-        this.gameBoard.zeroOutBoard();
-
-        return true;
-    }
+//
+//    public boolean reset(){
+//        this.currentPlayer = PLAYER_ONE;
+//        this.gameBoard.zeroOutBoard();
+//
+//
+//        return true;
+//    }
 
     public boolean switchPlayer(){
         this.currentPlayer = (this.currentPlayer == PLAYER_ONE) ? PLAYER_TWO : PLAYER_ONE;

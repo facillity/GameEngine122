@@ -17,8 +17,6 @@ public class CheckersView extends BaseView {
 
     @Override
     public void draw(BaseGame game){
-        super.draw(game);
-
         Coordinate selected = ((Checkers) game).getSelected();
         if(selected.isValid()){
             drawSelectedBorder(selected.getRow(), selected.getCol());
@@ -29,7 +27,7 @@ public class CheckersView extends BaseView {
             for(int c=0; c<game.getNumCols(); c++){
                 Canvas cell = (Canvas) this.getBoard().lookup("#" + r + ";" + c);
                 GraphicsContext gc = cell.getGraphicsContext2D();
-                gc.setFill(Color.BLUE);
+                gc.setFill(BG_COLOR);
 
                 if(r != selected.getRow() && c != selected.getCol())
                     gc.fillRect(5, 5, cell.getWidth()-10, cell.getHeight()-10);
