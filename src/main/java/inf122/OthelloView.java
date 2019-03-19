@@ -28,10 +28,10 @@ public class OthelloView extends BaseView {
 
                 if(game.getState().getGameBoard().getTile(r, c) == BaseGame.PLAYER_ONE){
                     gc.setFill(Color.BLACK);
-                    gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
+                    gc.fillOval(0, 0, cell.getWidth(), cell.getHeight());
                 }else if (game.getState().getGameBoard().getTile(r, c) == BaseGame.PLAYER_TWO){
                     gc.setFill(Color.WHITE);
-                    gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
+                    gc.fillOval(0, 0, cell.getWidth(), cell.getHeight());
                 }
             }
         }
@@ -49,7 +49,7 @@ public class OthelloView extends BaseView {
                 GraphicsContext gc = cell.getGraphicsContext2D();
                 gc.clearRect(0, 0, cell.getWidth(), cell.getHeight());
                 cell.getGraphicsContext2D().setFill(CELL_BG_COLOR);
-                cell.getGraphicsContext2D().fillRect(0, 0, cell.getWidth() - 10, cell.getHeight() - 10);
+                cell.getGraphicsContext2D().fillRect(0, 0, cell.getWidth(), cell.getHeight());
             }
         }
     }

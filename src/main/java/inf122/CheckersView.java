@@ -29,17 +29,18 @@ public class CheckersView extends BaseView {
                 GraphicsContext gc = cell.getGraphicsContext2D();
                 gc.setFill(BG_COLOR);
 
-                if(!(r == selected.getRow() && c == selected.getCol()))
-                    gc.fillRect(5, 5, cell.getWidth()-10, cell.getHeight()-10);
+
+                if(r != selected.getRow() && c != selected.getCol())
+                    gc.fillRect(0, 0, cell.getWidth(), cell.getHeight());
 
                 if(game.getState().getGameBoard().getTile(r, c) == BaseGame.PLAYER_ONE){
                     gc.setFill(Color.BLACK);
-                    gc.fillOval(10, 10, cell.getWidth()-20, cell.getHeight()-20);
+                    gc.fillOval(0, 0, cell.getWidth(), cell.getHeight());
                 }else if(game.getState().getGameBoard().getTile(r, c) == BaseGame.PLAYER_TWO){
                     gc.setFill(Color.RED);
-                    gc.fillOval(10, 10, cell.getWidth()-20, cell.getHeight()-20);
+                    gc.fillOval(0, 0, cell.getWidth(), cell.getHeight());
                 }else{
-                    gc.fillRect(5, 5, cell.getWidth()-10, cell.getHeight()-10);
+                    gc.fillRect(0, 0, cell.getWidth(), cell.getHeight());
                 }
             }
         }
@@ -51,6 +52,6 @@ public class CheckersView extends BaseView {
         gc.setFill(Color.YELLOW);
         gc.setStroke(Color.YELLOW);
         gc.setLineWidth(3);
-        gc.strokeRect(10, 10, cell.getWidth()-20, cell.getHeight()-20);
+        gc.strokeRect(0, 0, cell.getWidth(), cell.getHeight());
     }
 }

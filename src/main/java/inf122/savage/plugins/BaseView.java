@@ -26,6 +26,8 @@ public abstract class BaseView extends AnchorPane implements Initializable {
         board.setPrefHeight(600);
 
         GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
 
 
         cellWidth = board.getPrefWidth() / game.getNumCols();
@@ -36,7 +38,7 @@ public abstract class BaseView extends AnchorPane implements Initializable {
                 Canvas cell = new Canvas(cellWidth, cellHeight);
 
                 cell.getGraphicsContext2D().setFill(Color.rgb(241, 220, 212));
-                cell.getGraphicsContext2D().fillRect(5, 5, cellWidth - 10, cellHeight - 10);
+                cell.getGraphicsContext2D().fillRect(0, 0, cellWidth, cellHeight);
 
 
                 cell.setId(r + ";" + c);
@@ -65,7 +67,7 @@ public abstract class BaseView extends AnchorPane implements Initializable {
                 GraphicsContext gc = cell.getGraphicsContext2D();
                 gc.clearRect(0, 0, cell.getWidth(), cell.getHeight());
                 cell.getGraphicsContext2D().setFill(BG_COLOR);
-                cell.getGraphicsContext2D().fillRect(0, 0, cellWidth - 10, cellHeight - 10);
+                cell.getGraphicsContext2D().fillRect(0, 0, cellWidth, cellHeight);
             }
         }
     }
