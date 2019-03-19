@@ -77,14 +77,14 @@ public class BaseController implements EventHandler<MouseEvent> {
 
     public void displayPlayerInfo(BaseGame game)
     {
-        player1Name.setText(game.getState().getPlayer(0).getName());
-        System.out.println("********** WIN COUNT: "+ game.getState().getPlayer(0).getWinCount() );
-        player1Wins.setText(String.valueOf(game.getState().getPlayer(0).getWinCount()));
+        player1Name.setText(game.getState().getPlayer(PLAYER_ONE).getName());
+        System.out.println("********** WIN COUNT: "+ game.getState().getPlayer(PLAYER_ONE).getWinCount() );
+        player1Wins.setText(String.valueOf(game.getState().getPlayer(PLAYER_ONE).getWinCount()));
         player1Score.setText(String.valueOf(game.getState().getCurrentPlayer().getScore()));
 
-        player2Name.setText(game.getState().getPlayer(1).getName());
-        player2Wins.setText(String.valueOf(game.getState().getPlayer(1).getWinCount()));
-        player2Score.setText(String.valueOf(game.getState().getPlayer(1).getScore()));
+        player2Name.setText(game.getState().getPlayer(PLAYER_TWO).getName());
+        player2Wins.setText(String.valueOf(game.getState().getPlayer(PLAYER_TWO).getWinCount()));
+        player2Score.setText(String.valueOf(game.getState().getPlayer(PLAYER_TWO).getScore()));
 
     }
 
