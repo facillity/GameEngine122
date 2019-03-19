@@ -15,28 +15,15 @@ public class SavageController {
     @FXML
     private TextField player2Name;
 
-    private String p1Name = "player 1";
-    private String p2Name = "player 2";
 
     @FXML
     void launchGame(ActionEvent event) throws Exception {
         String gameName = ((Control)event.getSource()).getId();
+        String p1 = (player1Name.getText().isEmpty()) ? "Player 1" : player1Name.getText();
+        String p2 = (player2Name.getText().isEmpty()) ? "Player 2" : player2Name.getText();
 
-        BaseController controller = GameFactory.createGame(gameName, player1Name.getText(), player2Name.getText());
+        BaseController controller = GameFactory.createGame(gameName, p1, p2);
         controller.show();
     }
-
-    @FXML
-    void enterPlayer1Name(ActionEvent event) throws Exception
-    {
-        p1Name = player1Name.getText();
-    }
-
-    @FXML
-    void enterPlayer2Name(ActionEvent event) throws Exception
-    {
-        p2Name = player2Name.getText();
-    }
-
 
 }

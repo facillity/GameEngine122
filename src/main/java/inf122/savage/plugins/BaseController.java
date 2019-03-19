@@ -36,8 +36,6 @@ public class BaseController implements EventHandler<MouseEvent> {
     @FXML
     Text player1Wins;
 
-    @FXML
-    Text player1Score;
 
     @FXML
     Text player2Name;
@@ -45,8 +43,6 @@ public class BaseController implements EventHandler<MouseEvent> {
     @FXML
     Text player2Wins;
 
-    @FXML
-    Text player2Score;
 
     Stage stage = new Stage();
 
@@ -78,11 +74,9 @@ public class BaseController implements EventHandler<MouseEvent> {
     {
         player1Name.setText(game.getState().getPlayer(PLAYER_ONE).getName());
         player1Wins.setText(String.valueOf(game.getState().getPlayer(PLAYER_ONE).getWinCount()));
-        player1Score.setText(String.valueOf(game.getState().getCurrentPlayer().getScore()));
 
         player2Name.setText(game.getState().getPlayer(PLAYER_TWO).getName());
         player2Wins.setText(String.valueOf(game.getState().getPlayer(PLAYER_TWO).getWinCount()));
-        player2Score.setText(String.valueOf(game.getState().getPlayer(PLAYER_TWO).getScore()));
 
     }
 
