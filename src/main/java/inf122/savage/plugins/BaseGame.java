@@ -56,7 +56,7 @@ public abstract class BaseGame {
 	 * Default method for getting the current player
 	 * This is likely not to be changed.
 	 */
-	public Player currentPlayer(){
+	protected Player currentPlayer(){
 		return this.state.getCurrentPlayer();
 	}
 

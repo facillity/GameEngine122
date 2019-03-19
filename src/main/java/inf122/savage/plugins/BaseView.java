@@ -7,10 +7,7 @@ import javafx.scene.layout.*;
 
 import javafx.scene.paint.Color;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public abstract class BaseView extends AnchorPane implements Initializable {
+public abstract class BaseView {
 
     private AnchorPane board;
 
@@ -50,8 +47,7 @@ public abstract class BaseView extends AnchorPane implements Initializable {
     }
 
     public Canvas getCanvasAt(int row, int col){
-        Canvas cell = (Canvas) this.getBoard().lookup("#" + row + ";" + col);
-        return cell;
+        return (Canvas) this.getBoard().lookup("#" + row + ";" + col);
     }
 
     public AnchorPane getBoard(){
@@ -74,11 +70,4 @@ public abstract class BaseView extends AnchorPane implements Initializable {
 
 
     public abstract void draw(BaseGame game);
-
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb){
-        System.out.println("BaseView created");
-    }
 }
