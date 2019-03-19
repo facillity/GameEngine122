@@ -65,12 +65,13 @@ public class BaseController implements EventHandler<MouseEvent> {
 
 
         Stage stage = new Stage();
-        stage.setResizable(false);
+        stage.setResizable(true);
+        stage.sizeToScene();
         
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setOpacity(1);
         stage.setTitle(this.model.getName());
-        stage.setScene(new Scene(root, 860, 630));
+        stage.setScene(new Scene(root, 920, 670));
 
         stage.show();
     }
@@ -78,7 +79,6 @@ public class BaseController implements EventHandler<MouseEvent> {
     public void displayPlayerInfo(BaseGame game)
     {
         player1Name.setText(game.getState().getPlayer(PLAYER_ONE).getName());
-        System.out.println("********** WIN COUNT: "+ game.getState().getPlayer(PLAYER_ONE).getWinCount() );
         player1Wins.setText(String.valueOf(game.getState().getPlayer(PLAYER_ONE).getWinCount()));
         player1Score.setText(String.valueOf(game.getState().getCurrentPlayer().getScore()));
 

@@ -4,16 +4,49 @@ import inf122.savage.engine.GameState;
 import inf122.savage.plugins.BaseController;
 import inf122.savage.plugins.BaseGame;
 import inf122.savage.plugins.BaseView;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+
+class BattleshipHandler implements EventHandler<ActionEvent>{
+    private Battleship game;
+    BattleshipHandler(BaseGame game){
+        this.game = (Battleship) game;
+    }
+
+    @Override
+    public void handle(ActionEvent event){
+        this.game.changeOrientation();
+    }
+}
+
 
 public class BattleshipView extends BaseView {
     private  boolean swap = false;
 
-    public BattleshipView(AnchorPane board, BaseGame game, BaseController controller){
+
+    AnchorPane p2anchor;
+
+    Button rotateButton = new Button("Rotate ship");
+
+    public BattleshipView(AnchorPane board, BaseGame game, BaseController controller) {
         super(board, game, controller);
+
+
+        board.getChildren().add(rotateButton);
+        rotateButton.setTranslateY(board.getPrefHeight());
+//        board.getScene().getWindow().sizeToScene();
+        rotateButton.setOnAction(new BattleshipHandler(game));
+
     }
 
     public void draw(BaseGame game){
