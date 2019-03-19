@@ -17,6 +17,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import static inf122.savage.engine.GameState.PLAYER_ONE;
+import static inf122.savage.engine.GameState.PLAYER_TWO;
+
 public class BaseController implements EventHandler<MouseEvent> {
     private BaseView view;
     private BaseGame model;
@@ -71,7 +74,7 @@ public class BaseController implements EventHandler<MouseEvent> {
             System.out.println("here");
             // Game is not over
         }
-        else if (this.model.getWinner() == 1 )
+        else if (this.model.getWinner() == PLAYER_ONE || this.model.getWinner() == PLAYER_TWO )
         {
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Game Over!");

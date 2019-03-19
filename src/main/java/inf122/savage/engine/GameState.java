@@ -54,7 +54,9 @@ public class GameState{
     }
 
     public Player getPlayer(int index){
-        return this.players[index];
+        if(index == PLAYER_ONE)
+            return this.players[0];
+        return this.players[1];
     }
 
     public Board getGameBoard(){
