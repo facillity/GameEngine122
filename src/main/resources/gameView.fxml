@@ -39,12 +39,59 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                  <children>
-                                    <Text layoutX="29.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1 Info" />
+                                    <Text fx:id="player1Name" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" wrappingWidth="87.9912109375">
+                                       <font>
+                                          <Font name="Courier" size="15.0" />
+                                       </font></Text>
+                                    <Text layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wins:" wrappingWidth="87.9912109375">
+                                       <font>
+                                          <Font name="Courier" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:" wrappingWidth="87.9912109375">
+                                       <font>
+                                          <Font name="Courier" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="player1Wins" layoutX="64.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="87.9912109375">
+                                       <font>
+                                          <Font name="Courier" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="player1Score" layoutX="70.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="87.9912109375">
+                                       <font>
+                                          <Font name="Courier" size="15.0" />
+                                       </font>
+                                    </Text>
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                  <children>
-                                    <Text layoutX="28.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2 Info" />
+                                    <Text fx:id="player2Name" layoutX="15.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" wrappingWidth="87.9912109375">
+                                       <font>
+                                          <Font name="Courier" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="15.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wins:" wrappingWidth="87.9912109375">
+                                       <font>
+                                          <Font name="Courier" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="15.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:" wrappingWidth="87.9912109375">
+                                       <font>
+                                          <Font name="Courier" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="player2Wins" layoutX="67.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="87.9912109375">
+                                       <font>
+                                          <Font name="Courier" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="player2Score" layoutX="75.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="87.9912109375">
+                                       <font>
+                                          <Font name="Courier" size="15.0" />
+                                       </font>
+                                    </Text>
                                  </children>
                               </AnchorPane>
                           </items>

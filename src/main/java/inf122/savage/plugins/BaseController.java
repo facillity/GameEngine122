@@ -14,12 +14,13 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class BaseController implements EventHandler<MouseEvent> {
     private BaseView view;
-    private BaseGame model;
+    private static BaseGame model;
 
     public BaseController(BaseGame game){
         this.model = game;
@@ -27,6 +28,25 @@ public class BaseController implements EventHandler<MouseEvent> {
 
     @FXML
     AnchorPane gameBoard;
+
+    @FXML
+    Text player1Name;
+
+    @FXML
+    Text player1Wins;
+
+    @FXML
+    Text player1Score;
+
+    @FXML
+    Text player2Name;
+
+    @FXML
+    Text player2Wins;
+
+    @FXML
+    Text player2Score;
+
     Stage stage = new Stage();
 
 
@@ -37,6 +57,9 @@ public class BaseController implements EventHandler<MouseEvent> {
         Parent root = loader.load();
         view = ViewComponentGenerator.getViewComponent(gameBoard, model, this);
         view.draw(this.model);
+        displayPlayerInfo(this.model);
+
+
 
         Stage stage = new Stage();
         stage.setResizable(false);
@@ -47,6 +70,19 @@ public class BaseController implements EventHandler<MouseEvent> {
         stage.setScene(new Scene(root, 860, 630));
 
         stage.show();
+    }
+
+    public void displayPlayerInfo(BaseGame game)
+    {
+        player1Name.setText(game.getState().getPlayer(0).getName());
+        System.out.println("********** WIN COUNT: "+ game.getState().getPlayer(0).getWinCount() );
+        player1Wins.setText(String.valueOf(game.getState().getPlayer(0).getWinCount()));
+        player1Score.setText(String.valueOf(game.getState().getCurrentPlayer().getScore()));
+
+        player2Name.setText(game.getState().getPlayer(1).getName());
+        player2Wins.setText(String.valueOf(game.getState().getPlayer(1).getWinCount()));
+        player2Score.setText(String.valueOf(game.getState().getPlayer(1).getScore()));
+
     }
 
     @Override
@@ -62,6 +98,7 @@ public class BaseController implements EventHandler<MouseEvent> {
         if (this.model.move(row, col)){
             System.out.println("Was a valid move");
             this.view.draw(this.model);
+            displayPlayerInfo(this.model);
         } else {
             System.out.println("Not a valid move");
         }

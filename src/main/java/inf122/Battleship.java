@@ -3,13 +3,14 @@ package inf122;
 
 import java.util.ArrayList;
 
+import inf122.savage.engine.GameState;
 import inf122.savage.engine.Player;
 import inf122.savage.plugins.BaseGame;
 import inf122.savage.plugins.BaseView;
 
 public class Battleship extends BaseGame {
-    private static final int NUM_ROWS = 18;
-    private static final int NUM_COLS = 9;
+    private static final int NUM_ROWS = 20;
+    private static final int NUM_COLS = 10;
 
     private static final int EMPTY = 0;
     private static final int PLAYER_1 = 1;
@@ -259,7 +260,7 @@ public class Battleship extends BaseGame {
     }
 
     @Override
-    public Class<? extends BaseView> getViewClass(){
+    public Class<? extends BaseView> getViewClass() {
         return BattleshipView.class;
     }
 }
