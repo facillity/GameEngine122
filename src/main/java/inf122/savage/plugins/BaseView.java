@@ -9,6 +9,8 @@ import javafx.scene.paint.Color;
 
 public abstract class BaseView {
 
+    BaseView(){}
+
     private AnchorPane board;
 
     public static final Color BG_COLOR = Color.rgb(241, 220, 212);

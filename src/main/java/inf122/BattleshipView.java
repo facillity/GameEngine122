@@ -55,13 +55,13 @@ public class BattleshipView extends BaseView {
 
                             if(r >= 10) {
                                 gc.setFill(Color.LIGHTGRAY);
-                                gc.fillRect(5, 5, cell.getWidth() - 10, cell.getHeight() - 10);
+                                gc.fillRect(0, 0, cell.getWidth(), cell.getHeight());
                             }
                             else
                             {
 
                                 gc.setFill(Color.rgb(241, 220, 212));
-                                gc.fillRect(5, 5, cell.getWidth() - 10, cell.getHeight() - 10);
+                                gc.fillRect(0, 0, cell.getWidth(), cell.getHeight());
                             }
 
                 }
@@ -71,12 +71,12 @@ public class BattleshipView extends BaseView {
 
                             if(r < 10) {
                                 gc.setFill(Color.LIGHTGRAY);
-                                gc.fillRect(5, 5, cell.getWidth() - 10, cell.getHeight() - 10);
+                                gc.fillRect(0, 0, cell.getWidth(), cell.getHeight());
                             }
                             else
                             {
                                 gc.setFill(Color.rgb(241, 220, 212));
-                                gc.fillRect(5, 5, cell.getWidth() - 10, cell.getHeight() - 10);
+                                gc.fillRect(0, 0, cell.getWidth(), cell.getHeight());
                             }
 
                 }
@@ -88,13 +88,13 @@ public class BattleshipView extends BaseView {
                 if(((Battleship) game).turn < 5){
                     if(game.getState().getGameBoard().getTile(r, c) == PLAYER_ONE) {
                         gc.setFill(Color.RED);
-                        gc.fillOval(10, 10, cell.getWidth() - 20, cell.getHeight() - 20);
+                        gc.fillOval(PAD, PAD, cell.getWidth()-2*PAD, cell.getHeight()-2*PAD);
                     }
                     // player 1 sets up ships
                 } else if (((Battleship) game).turn >= 5 && ((Battleship) game).turn < 10){
                     if (game.getState().getGameBoard().getTile(r, c) == PLAYER_TWO){
                     gc.setFill(Color.BLUE);
-                    gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
+                    gc.fillOval(PAD, PAD, cell.getWidth()-2*PAD, cell.getHeight()-2*PAD);
                 }
                 } else if (((Battleship) game).turn >= 10){
                     // after set up and player 1's turn
@@ -103,13 +103,13 @@ public class BattleshipView extends BaseView {
 
                         if (game.getState().getGameBoard().getTile(r, c) == 3){
                             gc.setFill(Color.GREEN); // missed
-                            gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
+                            gc.fillOval(PAD, PAD, cell.getWidth()-2*PAD, cell.getHeight()-2*PAD);
                         } else if (game.getState().getGameBoard().getTile(r, c) == 4){
                             gc.setFill(Color.BLACK); // hit
-                            gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
+                            gc.fillOval(PAD, PAD, cell.getWidth()-2*PAD, cell.getHeight()-2*PAD);
                         } else if (game.getState().getGameBoard().getTile(r, c) == 5){
                             gc.setFill(Color.DEEPPINK); // missed
-                            gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
+                            gc.fillOval(PAD, PAD, cell.getWidth()-2*PAD, cell.getHeight()-2*PAD);
                         }
 
 
