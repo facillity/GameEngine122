@@ -22,8 +22,8 @@ public abstract class BaseView {
     public BaseView(AnchorPane board, BaseGame game, BaseController controller){
         this.board = board;
 
-        board.setPrefWidth(600);
-        board.setPrefHeight(600);
+        board.setPrefWidth(500);
+        board.setPrefHeight(500);
 
         GridPane grid = new GridPane();
         grid.setHgap(10);

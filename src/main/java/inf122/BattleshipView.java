@@ -39,7 +39,7 @@ public class BattleshipView extends BaseView {
 
 
         board.getChildren().add(rotateButton);
-        rotateButton.setTranslateY(board.getPrefHeight());
+        rotateButton.setTranslateY(700);
         rotateButton.setOnAction(new BattleshipHandler(game));
 
     }
