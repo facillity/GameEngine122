@@ -3,6 +3,8 @@ package inf122.savage.plugins;
 import inf122.savage.engine.*;
 import inf122.savage.util.PlayerFactory;
 
+import static inf122.savage.engine.GameState.PLAYER_ONE;
+
 public abstract class BaseGame {
 	protected GameState state;
 	protected int winner = GAME_NOT_OVER;
@@ -74,8 +76,14 @@ public abstract class BaseGame {
 	}
 
 	public boolean resetGame(){
-		this.state.currentPlayer = this.state.PLAYER_ONE;
+		this.state.currentPlayer = PLAYER_ONE;
 		this.state.gameBoard.zeroOutBoard();
+		if(this.winner < TIE){
+			// is not tie or game not over
+			this.getWinningPlayer().addWin();
+			PlayerFactory.savePlayer(this.getWinningPlayer(), this.getName());
+		}
+
 
 		this.winner = GAME_NOT_OVER;
 

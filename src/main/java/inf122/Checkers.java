@@ -13,6 +13,7 @@ public class Checkers extends BaseGame {
     private static final int NUM_ROWS = 10;
     private static final int NUM_COLS = 10;
     private Coordinate selected = new Coordinate(-1, -1);
+    private boolean selectLock = false;
 
     public Checkers(){
         super(NUM_ROWS, NUM_COLS);
@@ -41,7 +42,7 @@ public class Checkers extends BaseGame {
     public boolean move(int row, int col) {
         int tile = this.state.getGameBoard().getTile(row, col);
 
-        if(tile == this.state.getCurrentPlayerInt()){
+        if(!selectLock && tile == this.state.getCurrentPlayerInt()){
             this.selected = new Coordinate(row, col);
             return true;
         }
@@ -50,7 +51,7 @@ public class Checkers extends BaseGame {
             if(tile == Board.EMPTY){
                 int rowDiff = row - this.selected.getRow();
                 int colDiff = col - this.selected.getCol();
-                if(Math.abs(rowDiff) == 1 && Math.abs(colDiff) == 1){
+                if(!selectLock && Math.abs(rowDiff) == 1 && Math.abs(colDiff) == 1){
                     // Valid move!
                     this.state.getGameBoard().change(row, col, this.state.getCurrentPlayerInt());
                     this.state.getGameBoard().change(selected.getRow(), selected.getCol(), Board.EMPTY);
@@ -74,8 +75,10 @@ public class Checkers extends BaseGame {
                         this.state.getGameBoard().change(selected.getRow() + dr, selected.getCol() + dc, Board.EMPTY);
                         Coordinate newPos = new Coordinate(row, col);
                         if(canJump(newPos)){
+                            this.selectLock = true;
                             this.selected = newPos;
                         }else{
+                            this.selectLock = false;
                             switchPlayer();
                         }
                         this.checkWinner();
@@ -163,7 +166,7 @@ public class Checkers extends BaseGame {
                 if(r < 4){
                     piece = PLAYER_ONE;
                 }else if(r > 5){
-                    piece = state.PLAYER_TWO;
+                    piece = PLAYER_TWO;
                 }
                 if((r + c) % 2 == 1){
                     state.getGameBoard().change(r, c, piece);

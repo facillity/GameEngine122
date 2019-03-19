@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io/api/java,maven,eclipse,java-web,intellij
 
+# For Savage
+player-data.json
+
 ### Eclipse ###
 
 .metadata

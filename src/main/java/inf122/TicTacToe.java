@@ -60,21 +60,21 @@ public class TicTacToe extends BaseGame {
     /**
      * Checks if there is a winner in this row
      * @param row length 3 of tic tac toe elements
-     * @return 0/1 if player wins, 2 if no winner
+     * @return 1/2 if player wins, GAME_NOT_OVER Otherwise
      */
     private int checkSeries(int[] row){
         int tile = row[0];
         if (tile != Board.EMPTY && tile == row[1] && tile == row[2]){
-            return 1;
+            return tile;
         }
-        return 2;
+        return GAME_NOT_OVER;
     }
 
     private boolean checkRows(int[][] board){
         int win;
         for(int[] row : board){
             win = checkSeries(row);
-            if (win != BaseGame.TIE){
+            if (win != BaseGame.GAME_NOT_OVER){
                 this.winner = win;
                 return true;
             }
@@ -87,7 +87,7 @@ public class TicTacToe extends BaseGame {
         for(int c=0; c<board[0].length; c++){
             int[] col = {board[0][c], board[1][c], board[2][c]};
             win = checkSeries(col);
-            if (win != BaseGame.TIE){
+            if (win != BaseGame.GAME_NOT_OVER){
                 this.winner = win;
                 return true;
             }
@@ -103,7 +103,7 @@ public class TicTacToe extends BaseGame {
 
         for(int[] diag : diags){
             win = checkSeries(diag);
-            if (win != BaseGame.TIE){
+            if (win != BaseGame.GAME_NOT_OVER){
                 this.winner = win;
                 return true;
             }

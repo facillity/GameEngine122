@@ -23,7 +23,7 @@ public class SavageController {
         String gameName = ((Control)event.getSource()).getId();
         System.out.println(gameName);
 
-        BaseController controller = GameFactory.createGame(gameName, p1Name, p2Name);
+        BaseController controller = GameFactory.createGame(gameName, player1Name.getText(), player2Name.getText());
         controller.show();
     }
 
