@@ -1,52 +1,54 @@
 package inf122.savage.engine;
 
 public class GameState{
-    private Player Player1;
-    private Player Player2;
-    private Player currentPlayer;
-    private Board GameBoard;
+    private Player[] players;
+    public int currentPlayer;
+    public Board gameBoard;
 
-    public GameState(Player P1, Player P2, Board GB){
-        this.Player1 = P1;
-        this.Player2 = P2;
-        this.currentPlayer = P1;
-        this.GameBoard = GB;
+    private static final int PLAYER_ONE = 1;
+    private static final int PLAYER_TWO = 2;
+
+    public GameState(Player p1, Player p2, Board board){
+        this.players = new Player[2];
+        this.players[0] = p1;
+        this.players[1] = p2;
+        this.currentPlayer = PLAYER_ONE;
+        this.gameBoard = board;
     }
 
-    public GameState(Player P1, Player P2, int numRows, int numCols){
-        this.Player1 = P1;
-        this.Player2 = P2;
-        this.currentPlayer = P1;
+    public GameState(Player p1, Player p2, int numRows, int numCols){
+        this.players = new Player[2];
+        this.players[0] = p1;
+        this.players[1] = p2;
+        this.currentPlayer = PLAYER_ONE;
         makeBoard(numRows, numCols);
     }
 
-    public boolean reset(){
-        // Reset Player turn.
-        this.currentPlayer = this.Player1;
-
-        // Zero out GameBoard.
-        this.GameBoard.zeroOutBoard();
-        return true;
+    public void switchPlayer(){
+        this.currentPlayer = (this.currentPlayer == PLAYER_ONE) ? PLAYER_TWO : PLAYER_ONE;
     }
 
-    public boolean switchPlayer(){
-        if (this.currentPlayer == this.Player1){
-            this.currentPlayer = this.Player2;
-        } else {
-            this.currentPlayer = this.Player1;
+    private void makeBoard(int rowCount, int colCount){
+        if (!(rowCount <= 0 && colCount <= 0)){
+            this.gameBoard = new Board(rowCount, colCount);
         }
-        return true;
     }
 
-    private boolean makeBoard(int rowCount, int colCount){
-        if (rowCount <= 0 || colCount <= 0){
-            return false;
-        }
-        this.GameBoard = new Board(rowCount, colCount);
-        return true;
+    public int getCurrentPlayerInt(){
+        return this.currentPlayer;
     }
 
     public Player getCurrentPlayer(){
-        return this.currentPlayer;
+        return this.getPlayer(this.currentPlayer);
+    }
+
+    public Player getPlayer(int index){
+        if(index == PLAYER_ONE)
+            return this.players[0];
+        return this.players[1];
+    }
+
+    public Board getGameBoard(){
+        return this.gameBoard;
     }
 }

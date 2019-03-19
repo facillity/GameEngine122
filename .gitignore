@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io/api/java,maven,eclipse,java-web,intellij
 
+# For Savage
+player-data.json
+
 ### Eclipse ###
 
 .metadata
@@ -76,6 +79,7 @@ local.properties
 .idea/**/sqlDataSources.xml
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
+.idea/
 
 # Gradle:
 .idea/**/gradle.xml
