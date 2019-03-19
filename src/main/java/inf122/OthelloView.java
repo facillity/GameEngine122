@@ -9,6 +9,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
+import static inf122.savage.plugins.BaseGame.PLAYER_ONE;
+import static inf122.savage.plugins.BaseGame.PLAYER_TWO;
+
 public class OthelloView extends BaseView {
     final Color CELL_BG_COLOR = Color.ORANGE;
 
@@ -18,7 +21,6 @@ public class OthelloView extends BaseView {
     public void draw(BaseGame game){
 
 
-        System.out.println("Drawing");
         this.resetBoard(game);
 
         for(int r=0; r<game.getNumRows(); r++){
@@ -26,10 +28,10 @@ public class OthelloView extends BaseView {
                 Canvas cell = this.getCanvasAt(r, c);
                 GraphicsContext gc = cell.getGraphicsContext2D();
 
-                if(game.getState().getGameBoard().getTile(r, c) == BaseGame.PLAYER_ONE){
+                if(game.getState().getGameBoard().getTile(r, c) == PLAYER_ONE){
                     gc.setFill(Color.BLACK);
                     gc.fillOval(0, 0, cell.getWidth(), cell.getHeight());
-                }else if (game.getState().getGameBoard().getTile(r, c) == BaseGame.PLAYER_TWO){
+                }else if (game.getState().getGameBoard().getTile(r, c) == PLAYER_TWO){
                     gc.setFill(Color.WHITE);
                     gc.fillOval(0, 0, cell.getWidth(), cell.getHeight());
                 }

@@ -66,13 +66,11 @@ public class Othello extends BaseGame{
         	END_CONDITION = 0;
         	int coord = this.concatInt(row, col);
         	int currentTile = this.state.getCurrentPlayerInt();
-        	System.out.println("Current player: " + currentTile);
         	if(!moveList.containsKey(coord)) {
         		return false;
         	}
         	this.state.getGameBoard().getBoard()[row][col] = currentTile;
         	for(ArrayList<Integer> coords: moveList.get(coord)) {
-        		System.out.println(this.concatInt(coords.get(0), coords.get(1)));
         		this.state.getGameBoard().getBoard()[coords.get(0)][coords.get(1)] = currentTile;
         	}
         }
@@ -80,10 +78,6 @@ public class Othello extends BaseGame{
         this.state.switchPlayer();
         this.calculateWinner();
         return true;
-	}
-	
-	public boolean gameOver() {
-		return END_CONDITION >= 2;
 	}
 	
 	public void calculateWinner() {
@@ -112,17 +106,7 @@ public class Othello extends BaseGame{
         }
 	}
 
-	public void printBoard() {
-		int[][] gameBoard = this.state.getGameBoard().getBoard();
-		String board = "";
-        for(int row = 0; row < NUM_ROWS; ++row) {
-			for(int col = 0; col < NUM_COLS; ++col) {
-				board += gameBoard[row][col] + " ";
-			}
-			board+= "\n";
-		}
-        System.out.println(board);
-	}
+
 	
 	public int concatInt(int num1, int num2) {
 		// Concat two ints together. 
@@ -144,158 +128,123 @@ public class Othello extends BaseGame{
 					// Applies logic of Othello, checks in every direction to see if a coordinate is flippable / valid.
 					if(this.state.getGameBoard().getTile(row + 1, col) == oppositeTile) { // move down
 						int posX = row + 1;
-						System.out.println("Start here: ("+ row + ", " + col + ")");
 						HashSet<ArrayList<Integer>> moveSet = new HashSet<ArrayList<Integer>>();
 						while(this.state.getGameBoard().getTile(posX, col) == oppositeTile) {
 							ArrayList<Integer> coords = new ArrayList<Integer>();
 							coords.add(posX); coords.add(col); // Adds Row and Col as coordinates
 							moveSet.add(coords);
-							System.out.println("Next: ("+ coords.get(0) + ", " + coords.get(1) + ")");
 							++posX;
 						}
 						if(this.state.getGameBoard().getTile(posX, col) == currentTile) {
-							System.out.println("Valid match!");
 							moveList.put(this.concatInt(row,  col), moveSet);
 						}
-						else {System.out.println("Invalid match!");}
 					}
 					
 					if(this.state.getGameBoard().getTile(row - 1, col) == oppositeTile) { // move up
 						int posX = row - 1;
-						System.out.println("Start here: ("+ row + ", " + col + ")");
 						HashSet<ArrayList<Integer>> moveSet = new HashSet<ArrayList<Integer>>();
 						while(this.state.getGameBoard().getTile(posX, col) == oppositeTile) {
 							ArrayList<Integer> coords = new ArrayList<Integer>();
 							coords.add(posX); coords.add(col); // Adds Row and Col as coordinates
 							moveSet.add(coords);
-							System.out.println("Next: ("+ coords.get(0) + ", " + coords.get(1) + ")");
 							--posX;
 						}
 						if(this.state.getGameBoard().getTile(posX, col) == currentTile) {
-							System.out.println("Valid match!");/*
-							System.out.println("Valid coordinate " + 
-									this.concatInt(row,  col) +
-									" at : (" + row + ", " + col + ")");*/
 							moveList.put(this.concatInt(row,  col), moveSet);
 						}
-						else {System.out.println("Invalid match!");}
 					}
 					
 					if(this.state.getGameBoard().getTile(row, col + 1) == oppositeTile) { // move right
 						int posY = col + 1;
-						System.out.println("Start here: ("+ row + ", " + col + ")");
 						HashSet<ArrayList<Integer>> moveSet = new HashSet<ArrayList<Integer>>();
 						while(this.state.getGameBoard().getTile(row, posY) == oppositeTile) {
 							ArrayList<Integer> coords = new ArrayList<Integer>();
 							coords.add(row); coords.add(posY); // Adds Row and Col as coordinates
 							moveSet.add(coords);
-							System.out.println("Next: ("+ coords.get(0) + ", " + coords.get(1) + ")");
 							++posY;
 						}
 						if(this.state.getGameBoard().getTile(row, posY) == currentTile) {
-							System.out.println("Valid match!");
 							moveList.put(this.concatInt(row,  col), moveSet);
 						}
-						else {System.out.println("Invalid match!");}
 					}
 					
 					if(this.state.getGameBoard().getTile(row, col - 1) == oppositeTile) { // move left
 						int posY = col - 1;
-						System.out.println("Start here: ("+ row + ", " + col + ")");
 						HashSet<ArrayList<Integer>> moveSet = new HashSet<ArrayList<Integer>>();
 						while(this.state.getGameBoard().getTile(row, posY) == oppositeTile) {
 							ArrayList<Integer> coords = new ArrayList<Integer>();
 							coords.add(row); coords.add(posY); // Adds Row and Col as coordinates
 							moveSet.add(coords);
-							System.out.println("Next: ("+ coords.get(0) + ", " + coords.get(1) + ")");
 							--posY;
 						}
 						if(this.state.getGameBoard().getTile(row, posY) == currentTile) {
-							System.out.println("Valid match!");
 							moveList.put(this.concatInt(row,  col), moveSet);
 						}
-						else {System.out.println("Invalid match!");}
 					}
 					
 					if(this.state.getGameBoard().getTile(row + 1, col + 1) == oppositeTile) { // move down-right
 						int posX = row + 1;
 						int posY = col + 1;
-						System.out.println("Start here: ("+ row + ", " + col + ")");
 						HashSet<ArrayList<Integer>> moveSet = new HashSet<ArrayList<Integer>>();
 						while(this.state.getGameBoard().getTile(posX, posY) == oppositeTile) {
 							ArrayList<Integer> coords = new ArrayList<Integer>();
 							coords.add(posX); coords.add(posY); // Adds Row and Col as coordinates
 							moveSet.add(coords);
-							System.out.println("Next: ("+ coords.get(0) + ", " + coords.get(1) + ")");
 							++posX;
 							++posY;
 						}
 						if(this.state.getGameBoard().getTile(posX, posY) == currentTile) {
-							System.out.println("Valid match!");
 							moveList.put(this.concatInt(row,  col), moveSet);
 						}
-						else {System.out.println("Invalid match!");}
 					}
 					
 					if(this.state.getGameBoard().getTile(row + 1, col - 1) == oppositeTile) { // move down-left
 						int posX = row + 1;
 						int posY = col - 1;
-						System.out.println("Start here: ("+ row + ", " + col + ")");
 						HashSet<ArrayList<Integer>> moveSet = new HashSet<ArrayList<Integer>>();
 						while(this.state.getGameBoard().getTile(posX, posY) == oppositeTile) {
 							ArrayList<Integer> coords = new ArrayList<Integer>();
 							coords.add(posX); coords.add(posY); // Adds Row and Col as coordinates
 							moveSet.add(coords);
-							System.out.println("Next: ("+ coords.get(0) + ", " + coords.get(1) + ")");
 							++posX;
 							--posY;
 						}
 						if(this.state.getGameBoard().getTile(posX, posY) == currentTile) {
-							System.out.println("Valid match!");
 							moveList.put(this.concatInt(row,  col), moveSet);
 						}
-						else {System.out.println("Invalid match!");}
 					}
 					
 					if(this.state.getGameBoard().getTile(row - 1, col + 1) == oppositeTile) { // move up-right
 						int posX = row - 1;
 						int posY = col + 1;
 						
-						System.out.println("Start here: ("+ row + ", " + col + ")");
 						HashSet<ArrayList<Integer>> moveSet = new HashSet<ArrayList<Integer>>();
 						while(this.state.getGameBoard().getTile(posX, posY) == oppositeTile) {
 							ArrayList<Integer> coords = new ArrayList<Integer>();
 							coords.add(posX); coords.add(posY); // Adds Row and Col as coordinates
 							moveSet.add(coords);
-							System.out.println("Next: ("+ coords.get(0) + ", " + coords.get(1) + ")");
 							--posX;
 							++posY;
 						}
 						if(this.state.getGameBoard().getTile(posX, posY) == currentTile) {
-							System.out.println("Valid match!");
 							moveList.put(this.concatInt(row,  col), moveSet);
 						}
-						else {System.out.println("Invalid match!");}
 					}
 					
 					if(this.state.getGameBoard().getTile(row - 1, col - 1) == oppositeTile) { // move up-left
 						int posX = row - 1;
 						int posY = col - 1;
-						System.out.println("Start here: ("+ row + ", " + col + ")");
 						HashSet<ArrayList<Integer>> moveSet = new HashSet<ArrayList<Integer>>();
 						while(this.state.getGameBoard().getTile(posX, posY) == oppositeTile) {
 							ArrayList<Integer> coords = new ArrayList<Integer>();
 							coords.add(posX); coords.add(posY); // Adds Row and Col as coordinates
 							moveSet.add(coords);
-							System.out.println("Next: ("+ coords.get(0) + ", " + coords.get(1) + ")");
 							--posX;
 							--posY;
 						}
 						if(this.state.getGameBoard().getTile(posX, posY) == currentTile) {
-							System.out.println("Valid match!");
 							moveList.put(this.concatInt(row,  col), moveSet);
 						}
-						else {System.out.println("Invalid match!");}
 					}
 				}
 				
