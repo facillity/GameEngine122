@@ -11,6 +11,8 @@ public abstract class BaseGame {
 
 	public static final int DEFAULT_NUM_ROWS = 8;
 	public static final int DEFAULT_NUM_COLS = 8;
+	public static final int PLAYER_ONE = 1;
+	public static final int PLAYER_TWO = 2;
 	public static final int TIE = 2;
 	public static final int GAME_NOT_OVER = 3;
 

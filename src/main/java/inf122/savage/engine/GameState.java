@@ -5,8 +5,8 @@ public class GameState{
     public int currentPlayer;
     public Board gameBoard;
 
-    public static final int PLAYER_ONE = 1;
-    public static final int PLAYER_TWO = 2;
+    private static final int PLAYER_ONE = 1;
+    private static final int PLAYER_TWO = 2;
 
     public GameState(Player p1, Player p2, Board board){
         this.players = new Player[2];

@@ -25,12 +25,11 @@ public class OthelloView extends BaseView {
             for(int c=0; c<game.getNumCols(); c++){
                 Canvas cell = (Canvas) this.getBoard().lookup("#" + r + ";" + c);
                 GraphicsContext gc = cell.getGraphicsContext2D();
-//                gc.setFill(CELL_BG_COLOR);
 
-                if(game.getState().getGameBoard().getTile(r, c) == GameState.PLAYER_ONE){
+                if(game.getState().getGameBoard().getTile(r, c) == BaseGame.PLAYER_ONE){
                     gc.setFill(Color.BLACK);
                     gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
-                }else if (game.getState().getGameBoard().getTile(r, c) == GameState.PLAYER_TWO){
+                }else if (game.getState().getGameBoard().getTile(r, c) == BaseGame.PLAYER_TWO){
                     gc.setFill(Color.WHITE);
                     gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
                 }

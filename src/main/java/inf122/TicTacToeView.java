@@ -20,11 +20,11 @@ public class TicTacToeView extends BaseView {
             for(int c=0; c<game.getNumCols(); c++){
                 Canvas cell = (Canvas) this.getBoard().lookup("#" + r + ";" + c);
                 GraphicsContext gc = cell.getGraphicsContext2D();
-                if(game.getState().getGameBoard().getTile(r, c) == GameState.PLAYER_ONE){
+                if(game.getState().getGameBoard().getTile(r, c) == BaseGame.PLAYER_ONE){
                     gc.setStroke(Color.BLACK);
                     gc.strokeLine(5, 5, cell.getWidth()-10, cell.getHeight()-10);
                     gc.strokeLine(cell.getWidth()-10, 5, 5, cell.getHeight()-10);
-                }else if (game.getState().getGameBoard().getTile(r, c) == GameState.PLAYER_TWO){
+                }else if (game.getState().getGameBoard().getTile(r, c) == BaseGame.PLAYER_TWO){
                     gc.setStroke(Color.BLACK);
                     gc.strokeOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
                 }
