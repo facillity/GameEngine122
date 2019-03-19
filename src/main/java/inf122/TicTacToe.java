@@ -1,12 +1,13 @@
 package inf122;
 
-import inf122.savage.engine.Board;
 import inf122.savage.plugins.BaseGame;
 import inf122.savage.plugins.BaseView;
 
+import static inf122.savage.engine.Board.EMPTY;
+
 public class TicTacToe extends BaseGame {
-    public static final int NUM_ROWS = 3;
-    public static final int NUM_COLS = 3;
+    private static final int NUM_ROWS = 3;
+    private static final int NUM_COLS = 3;
 
     public TicTacToe(){
         super(NUM_ROWS, NUM_COLS);
@@ -23,7 +24,7 @@ public class TicTacToe extends BaseGame {
             return false;
         }
         // Checks if there is already something at this position
-        if(this.state.getGameBoard().getTile(row, col) != Board.EMPTY){
+        if(this.state.getGameBoard().getTile(row, col) != EMPTY){
             return false;
         }
 
@@ -42,11 +43,18 @@ public class TicTacToe extends BaseGame {
      */
     private void checkWinner(){
         int[][] board = this.state.getGameBoard().getBoard();
-        int win;
 
         if(checkRows(board) || checkColumns(board) || checkDiagonals(board)){
             return;
         }
+        for(int r=0;r<getNumRows(); r++){
+            for(int c=0; c<getNumCols(); c++){
+                if(board[r][c] == EMPTY){
+                    return;
+                }
+            }
+        }
+        this.winner = TIE;
     }
 
     /**
@@ -54,7 +62,7 @@ public class TicTacToe extends BaseGame {
      * @return True if game is over (and winner can be found)
      */
     private boolean isGameOver() {
-        return this.winner != BaseGame.GAME_NOT_OVER;
+        return this.winner != GAME_NOT_OVER;
     }
 
     /**
@@ -64,7 +72,7 @@ public class TicTacToe extends BaseGame {
      */
     private int checkSeries(int[] row){
         int tile = row[0];
-        if (tile != Board.EMPTY && tile == row[1] && tile == row[2]){
+        if (tile != EMPTY && tile == row[1] && tile == row[2]){
             return tile;
         }
         return GAME_NOT_OVER;
@@ -87,7 +95,7 @@ public class TicTacToe extends BaseGame {
         for(int c=0; c<board[0].length; c++){
             int[] col = {board[0][c], board[1][c], board[2][c]};
             win = checkSeries(col);
-            if (win != BaseGame.GAME_NOT_OVER){
+            if (win != GAME_NOT_OVER){
                 this.winner = win;
                 return true;
             }
@@ -103,7 +111,7 @@ public class TicTacToe extends BaseGame {
 
         for(int[] diag : diags){
             win = checkSeries(diag);
-            if (win != BaseGame.GAME_NOT_OVER){
+            if (win != GAME_NOT_OVER){
                 this.winner = win;
                 return true;
             }

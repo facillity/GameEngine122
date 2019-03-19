@@ -1,9 +1,10 @@
 package inf122;
 
-import inf122.savage.engine.Board;
 import inf122.savage.plugins.BaseGame;
 import inf122.savage.plugins.BaseView;
 import inf122.savage.util.Coordinate;
+
+import static inf122.savage.engine.Board.EMPTY;
 
 public class Checkers extends BaseGame {
     private static final int NUM_ROWS = 10;
@@ -44,13 +45,13 @@ public class Checkers extends BaseGame {
         }
 
         if(this.selected.getRow() != -1){
-            if(tile == Board.EMPTY){
+            if(tile == EMPTY){
                 int rowDiff = row - this.selected.getRow();
                 int colDiff = col - this.selected.getCol();
                 if(!selectLock && Math.abs(rowDiff) == 1 && Math.abs(colDiff) == 1){
                     // Valid move!
                     this.state.getGameBoard().change(row, col, this.state.getCurrentPlayerInt());
-                    this.state.getGameBoard().change(selected.getRow(), selected.getCol(), Board.EMPTY);
+                    this.state.getGameBoard().change(selected.getRow(), selected.getCol(), EMPTY);
                     this.switchPlayer();
                     this.checkWinner();
                     return true;
@@ -64,11 +65,11 @@ public class Checkers extends BaseGame {
                     System.out.println(dr + ":" + dc);
 
                     int between = this.state.getGameBoard().getTile(this.selected.getRow() + dr, this.selected.getCol() + dc);
-                    if(between != Board.EMPTY && between != this.state.getCurrentPlayerInt()){
+                    if(between != EMPTY && between != this.state.getCurrentPlayerInt()){
                         // Valid move!
                         this.state.getGameBoard().change(row, col, this.state.getCurrentPlayerInt());
-                        this.state.getGameBoard().change(selected.getRow(), selected.getCol(), Board.EMPTY);
-                        this.state.getGameBoard().change(selected.getRow() + dr, selected.getCol() + dc, Board.EMPTY);
+                        this.state.getGameBoard().change(selected.getRow(), selected.getCol(), EMPTY);
+                        this.state.getGameBoard().change(selected.getRow() + dr, selected.getCol() + dc, EMPTY);
                         Coordinate newPos = new Coordinate(row, col);
                         if(canJump(newPos)){
                             this.selectLock = true;
@@ -101,7 +102,7 @@ public class Checkers extends BaseGame {
                 int secondC = (c > 0)? 2 : -2;
                 int tile = this.state.getGameBoard().getTile(pos.getRow() + r, pos.getCol() + c);
                 int target = this.state.getGameBoard().getTile(pos.getRow() + secondR, pos.getCol() + secondC);
-                if(tile != Board.EMPTY && tile != this.state.getCurrentPlayerInt() && target == Board.EMPTY){
+                if(tile != EMPTY && tile != this.state.getCurrentPlayerInt() && target == EMPTY){
                     System.out.print("Can jump again");
                     return true;
                 }
