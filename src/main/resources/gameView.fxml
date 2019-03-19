@@ -48,17 +48,7 @@
                                           <Font name="Courier" size="15.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="14.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:" wrappingWidth="87.9912109375">
-                                       <font>
-                                          <Font name="Courier" size="15.0" />
-                                       </font>
-                                    </Text>
                                     <Text fx:id="player1Wins" layoutX="64.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="87.9912109375">
-                                       <font>
-                                          <Font name="Courier" size="15.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="player1Score" layoutX="70.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="87.9912109375">
                                        <font>
                                           <Font name="Courier" size="15.0" />
                                        </font>
@@ -77,17 +67,7 @@
                                           <Font name="Courier" size="15.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="15.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:" wrappingWidth="87.9912109375">
-                                       <font>
-                                          <Font name="Courier" size="15.0" />
-                                       </font>
-                                    </Text>
                                     <Text fx:id="player2Wins" layoutX="67.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="87.9912109375">
-                                       <font>
-                                          <Font name="Courier" size="15.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="player2Score" layoutX="75.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="87.9912109375">
                                        <font>
                                           <Font name="Courier" size="15.0" />
                                        </font>
