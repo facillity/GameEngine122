@@ -33,7 +33,7 @@ public class CheckersView extends BaseView {
                 gc.setFill(BG_COLOR);
 
 
-                if(r != selected.getRow() && c != selected.getCol())
+                if(!selected.equals(new Coordinate(r, c)))
                     gc.fillRect(0, 0, cell.getWidth(), cell.getHeight());
 
                 if(game.getState().getGameBoard().getTile(r, c) == PLAYER_ONE){

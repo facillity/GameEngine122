@@ -23,4 +23,8 @@ public class Coordinate {
     public int getCol(){
         return this.col;
     }
+
+    public boolean equals(Coordinate other){
+        return (this.row == other.getRow() && this.col == other.getCol());
+    }
 }
