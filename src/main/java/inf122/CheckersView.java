@@ -30,7 +30,7 @@ public class CheckersView extends BaseView {
                 GraphicsContext gc = cell.getGraphicsContext2D();
                 gc.setFill(BG_COLOR);
 
-                if(r != selected.getRow() && c != selected.getCol())
+                if(!(r == selected.getRow() && c == selected.getCol()))
                     gc.fillRect(5, 5, cell.getWidth()-10, cell.getHeight()-10);
 
                 if(game.getState().getGameBoard().getTile(r, c) == game.getState().PLAYER_ONE){
