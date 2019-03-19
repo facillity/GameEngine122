@@ -19,7 +19,7 @@ public class Battleship extends BaseGame {
     private static final int HIT = 4;
     private static final int SUNK = 5;
 
-    private int turn = 0;
+    public int turn = 0;
     private boolean horizontal = true;
 
     private ArrayList<ArrayList<ArrayList<Integer>>> player1ships = new ArrayList<ArrayList<ArrayList<Integer>>>();
@@ -27,10 +27,12 @@ public class Battleship extends BaseGame {
 
     public Battleship(){
         super(NUM_ROWS, NUM_COLS);
+        this.winner = GAME_NOT_OVER;
     }
 
     public Battleship(String p1, String p2){
         super(NUM_ROWS, NUM_COLS, p1, p2);
+        this.winner = GAME_NOT_OVER;
     }
 
     /**
@@ -57,7 +59,7 @@ public class Battleship extends BaseGame {
         if (player == 1){
             useRow = row;
         } else {
-            useRow = row + 8;
+            useRow = row;
         }
         try {
 
@@ -124,6 +126,7 @@ public class Battleship extends BaseGame {
         } else if (turn == 4) {
             if (placeShip(1, row, col, this.horizontal, 2)){
                 turn++;
+                this.state.switchPlayer();
                 return true;
             }
         } else if (turn == 5) {
@@ -149,6 +152,7 @@ public class Battleship extends BaseGame {
         } else if (turn == 9) {
             if (placeShip(2, row, col, this.horizontal, 2)){
                 turn++;
+                this.state.switchPlayer();
                 return true;
             }
         } else {
@@ -157,30 +161,48 @@ public class Battleship extends BaseGame {
                 if (state.getGameBoard().getTile(row, col) == 0 ){
                     // Miss!
                     state.getGameBoard().change(row, col, MISS);
+                    this.state.switchPlayer();
+                    checkShips();
+                    checkWinner();
+                    return true;
                 } else if (state.getGameBoard().getTile(row, col) == 2) {
                     // Hit!
                     state.getGameBoard().change(row, col, HIT); // hit or miss, i guess they never miss huh
+                    state.getPlayer(0).addScore(1);
+                    this.state.switchPlayer();
+                    checkShips();
+                    checkWinner();
+                    return true;
                 }
                 else {
                     return false;
                 }
-                if (checkShips(1) || checkShips(2)){
-
-                }
+//                if (checkShips(1) || checkShips(2)){
+//
+//                }
             } else {
                 // Current player is second player.
-                int useRow = row + 8;
+                int useRow = row;
                 if (state.getGameBoard().getTile(useRow, col) == 0){
                     // Miss!
                     state.getGameBoard().change(useRow, col, MISS);
+                    this.state.switchPlayer();
+                    checkShips();
+                    checkWinner();
+                    return true;
                 } else if (state.getGameBoard().getTile(useRow, col) == 1){
                     // Hit!
                     state.getGameBoard().change(useRow, col, HIT);
+                    state.getPlayer(1).addScore(1);
+                    this.state.switchPlayer();
+                    checkShips();
+                    checkWinner();
+                    return true;
                 } else {
                     return false;
                 }
             }
-            return false;
+//            return false;
         }
         return false;
     }
@@ -188,45 +210,50 @@ public class Battleship extends BaseGame {
     /**
      * Runs logic to check if a ship has been sunk. If it has, it updates the board and the ship list
      * stored inside this class for the specified player.
-     * @param player 1 or 2
      * @return true if a ship has been sunk, false otherwise.
      */
-    private boolean checkShips(int player){
+    private boolean checkShips(){
         // returns true if ship was sunk, false otherwise
-        ArrayList<ArrayList<ArrayList<Integer>>> playerships;
-        if (player == 1){
-            playerships = player1ships;
-        } else {
-            playerships = player2ships;
-        }
-        if (player == 1){
-            for (int idx = 0; idx < playerships.size(); idx++){
-                for (int ship_idx = 0; ship_idx < playerships.get(idx).size(); ship_idx++){
-                    int hitCount = 0;
-                    for (int ship_coord = 0; ship_coord < playerships.get(idx).get(ship_idx).size(); ship_coord++){
-                        if (state.getGameBoard().getTile(playerships.get(idx).get(ship_idx).get(0),
-                                playerships.get(idx).get(ship_idx).get(1)) == HIT){
-                            hitCount++;
-                        }
-                    }
-                    if (hitCount == playerships.get(ship_idx).size()){
-                        // ship is sunk
+        for (int idx = 0; idx < player1ships.size(); idx++){
+            int hit_count = 0;
+            for (int coord_idx = 0; coord_idx < player1ships.get(idx).size(); coord_idx++){
 
-                        // replace all spaces with SUNK
-                        for (int ship_coord = 0; ship_coord < playerships.get(idx).get(ship_idx).size(); ship_coord++){
-                            state.getGameBoard().change(playerships.get(idx).get(ship_idx).get(0),
-                                    playerships.get(idx).get(ship_idx).get(1), SUNK);
-
-                        }
-
-                        // delete the ship
-                        playerships.remove(ship_idx);
-                        return true;
-                    }
+                if (state.getGameBoard().getTile(player1ships.get(idx).get(coord_idx).get(0),
+                        player1ships.get(idx).get(coord_idx).get(1)) == 4){
+                    hit_count ++;
                 }
             }
+            if (hit_count == player1ships.get(idx).size()){
+                // ship was sunk
+                for (int coord_idx = 0; coord_idx < player1ships.get(idx).size(); coord_idx++){
+                    state.getGameBoard().change(player1ships.get(idx).get(coord_idx).get(0),
+                            player1ships.get(idx).get(coord_idx).get(1), 5) ;
+                }
+                player1ships.remove(idx);
+                return true;
+            } // else ship wasn't sunk
+        }
+        for (int idx = 0; idx < player2ships.size(); idx++){
+            int hit_count = 0;
+            for (int coord_idx = 0; coord_idx < player2ships.get(idx).size(); coord_idx++){
+
+                if (state.getGameBoard().getTile(player2ships.get(idx).get(coord_idx).get(0),
+                        player2ships.get(idx).get(coord_idx).get(1)) == 4){
+                    hit_count ++;
+                }
+            }
+            if (hit_count == player2ships.get(idx).size()){
+                // ship was sunk
+                for (int coord_idx = 0; coord_idx < player2ships.get(idx).size(); coord_idx++){
+                    state.getGameBoard().change(player2ships.get(idx).get(coord_idx).get(0),
+                            player2ships.get(idx).get(coord_idx).get(1), 5) ;
+                }
+                player2ships.remove(idx);
+                return true;
+            } // else ship wasn't sunk
         }
         return false;
+
     }
 
     /**
@@ -234,12 +261,14 @@ public class Battleship extends BaseGame {
      * @return 0= player 1 won, 1= player 2 won, 3= game not over
      */
     public int getWinner(){
-        if (player1ships.size() == 0){
-            return 1;
-        } else if (player2ships.size() == 0){
-            return 0;
+        if (player1ships.size() == 0 && turn >= 10){
+            System.out.println("Player1win");
+            return PLAYER_2;
+        } else if (player2ships.size() == 0 && turn >= 10){
+            System.out.println("Player2win");
+            return PLAYER_1;
         } else {
-            return 3;
+            return GAME_NOT_OVER;
         }
     }
 
@@ -250,10 +279,10 @@ public class Battleship extends BaseGame {
      * @return Player or NULL
      */
     public Player getWinningPlayer(){
-        if (this.getWinner() == 0){
-            return state.getPlayer(0);
-        } else if (this.getWinner() == 1){
-            return state.getPlayer(1);
+        if (this.getWinner() == PLAYER_1){
+            return state.getPlayer(GameState.PLAYER_ONE);
+        } else if (this.getWinner() == PLAYER_1){
+            return state.getPlayer(GameState.PLAYER_TWO);
         } else {
             return null;
         }
@@ -262,5 +291,16 @@ public class Battleship extends BaseGame {
     @Override
     public Class<? extends BaseView> getViewClass() {
         return BattleshipView.class;
+    }
+
+    private void checkWinner(){
+        if (this.getWinner() == 3){
+            // game is still going
+        } else if (this.getWinner() == PLAYER_1){
+            this.winner = PLAYER_1;
+        } else if (this.getWinner() == PLAYER_2){
+            this.winner = PLAYER_2;
+        }
+
     }
 }

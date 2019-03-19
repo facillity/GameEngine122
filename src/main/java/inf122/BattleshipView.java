@@ -10,43 +10,99 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 public class BattleshipView extends BaseView {
+    private  boolean swap = false;
+
     public BattleshipView(AnchorPane board, BaseGame game, BaseController controller){
         super(board, game, controller);
     }
+
     public void draw(BaseGame game){
 
         System.out.println("Drawing");
-        for(int r=0; r<game.getNumRows()/2; r++){
+        for(int r=0; r<game.getNumRows(); r++){
             for(int c=0; c<game.getNumCols(); c++){
                 Canvas cell = (Canvas) this.getBoard().lookup("#" + r + ";" + c);
                 GraphicsContext gc = cell.getGraphicsContext2D();
-                if(game.getState().getGameBoard().getTile(r, c) == GameState.PLAYER_ONE){
-                    game.getViewClass();
-                    gc.setFill(Color.RED);
-                    gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
+                if(game.getState().currentPlayer == GameState.PLAYER_ONE && !swap ||
+                        game.getState().currentPlayer == GameState.PLAYER_TWO  && swap) {
+                    //System.out.println("here1");
 
-                }else if (game.getState().getGameBoard().getTile(r, c) == GameState.PLAYER_TWO){
+                            if(r >= 10) {
+                                gc.setFill(Color.LIGHTGRAY);
+                                gc.fillRect(5, 5, cell.getWidth() - 10, cell.getHeight() - 10);
+                            }
+                            else
+                            {
+
+                                gc.setFill(Color.rgb(241, 220, 212));
+                                gc.fillRect(5, 5, cell.getWidth() - 10, cell.getHeight() - 10);
+                            }
+
+                }
+
+                if(game.getState().currentPlayer == GameState.PLAYER_TWO && !swap ||
+                        game.getState().currentPlayer == GameState.PLAYER_ONE  && swap) {
+
+                            if(r < 10) {
+                                gc.setFill(Color.LIGHTGRAY);
+                                gc.fillRect(5, 5, cell.getWidth() - 10, cell.getHeight() - 10);
+                            }
+                            else
+                            {
+                                gc.setFill(Color.rgb(241, 220, 212));
+                                gc.fillRect(5, 5, cell.getWidth() - 10, cell.getHeight() - 10);
+                            }
+
+                }
+
+                if(((Battleship) game).turn == 10)
+                {
+                    swap = true;
+                }
+                if(((Battleship) game).turn < 5){
+                    if(game.getState().getGameBoard().getTile(r, c) == GameState.PLAYER_ONE) {
+                        gc.setFill(Color.RED);
+                        gc.fillOval(10, 10, cell.getWidth() - 20, cell.getHeight() - 20);
+                    }
+                    // player 1 sets up ships
+                } else if (((Battleship) game).turn >= 5 && ((Battleship) game).turn < 10){
+                    if (game.getState().getGameBoard().getTile(r, c) == GameState.PLAYER_TWO){
                     gc.setFill(Color.BLUE);
                     gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
                 }
+                } else if (((Battleship) game).turn >= 10){
+                    // after set up and player 1's turn
+                    // if board is second half
+                        // draw stuff
+
+                        if (game.getState().getGameBoard().getTile(r, c) == 3){
+                            gc.setFill(Color.GREEN); // missed
+                            gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
+                        } else if (game.getState().getGameBoard().getTile(r, c) == 4){
+                            gc.setFill(Color.BLACK); // hit
+                            gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
+                        } else if (game.getState().getGameBoard().getTile(r, c) == 5){
+                            gc.setFill(Color.DEEPPINK); // missed
+                            gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
+                        }
+
+
+                }
+//                if(game.getState().getGameBoard().getTile(r, c) == GameState.PLAYER_ONE){
+//                    gc.setFill(Color.RED);
+//                    gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
+//
+//                }else if (game.getState().getGameBoard().getTile(r, c) == GameState.PLAYER_TWO){
+//                    gc.setFill(Color.BLUE);
+//                    gc.fillOval(10, 10,cell.getWidth()-20, cell.getHeight()-20);
+//                }
             }
         }
 
-        if(game.getState().currentPlayer == GameState.PLAYER_ONE)
-        {
-
-
-        }
-
-//        if(game.getState().getGameBoard().getTile(r, c) == GameState.PLAYER_TWO) {
-//            for (int r = 0; r < game.getNumRows() / 2; r++) {
-//                for (int c = 0; c < game.getNumCols(); c++) {
-//
-//                }
-//            }
-//        }
-
-        // Check if game is over
-        // if so, make a popup or something.
     }
 }
+
+//public void player1Setup(BaseGame game)
+//{
+//
+//}
