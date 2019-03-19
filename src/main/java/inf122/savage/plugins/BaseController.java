@@ -120,6 +120,7 @@ public class BaseController implements EventHandler<MouseEvent> {
             {
                this.model.resetGame();
                this.view.resetBoard(this.model);
+               this.view.draw(this.model);
             }
             else
             {
@@ -137,6 +138,7 @@ public class BaseController implements EventHandler<MouseEvent> {
         {
             this.model.resetGame();
             this.view.resetBoard(this.model);
+            this.view.draw(this.model);
         }
         else
         {

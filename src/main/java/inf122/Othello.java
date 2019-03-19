@@ -20,18 +20,26 @@ public class Othello extends BaseGame{
 
     public Othello(String p1, String p2){
         super(NUM_ROWS, NUM_COLS, p1, p2);
+
+		this.resetGame();
+	}
+
+    @Override
+    public boolean resetGame(){
+    	super.resetGame();
         int [][] gameBoard = this.state.getGameBoard().getBoard();
         for(int row = 0; row < NUM_ROWS; ++row) {
 			for(int col = 0; col < NUM_COLS; ++col) {
 				gameBoard[row][col] = Board.EMPTY;
 			}
 		}
-        
-        gameBoard[3][3] = 1;
-        gameBoard[3][4] = 2;
-        gameBoard[4][4] = 1;
-        gameBoard[4][3] = 2;
-    }
+
+		gameBoard[3][3] = 1;
+		gameBoard[3][4] = 2;
+		gameBoard[4][4] = 1;
+		gameBoard[4][3] = 2;
+		return true;
+	}
 
 	@Override
 	public boolean move(int row, int col) {
@@ -71,6 +79,7 @@ public class Othello extends BaseGame{
         }
         this.calculateWinner();
         this.state.switchPlayer();
+        this.calculateWinner();
         return true;
 	}
 	
@@ -103,7 +112,7 @@ public class Othello extends BaseGame{
         	this.winner = (player1 > player2) ? 1 : 2;
         }
 	}
-	
+
 	public void printBoard() {
 		int[][] gameBoard = this.state.getGameBoard().getBoard();
 		String board = "";
