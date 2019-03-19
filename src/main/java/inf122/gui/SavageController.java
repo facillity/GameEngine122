@@ -21,7 +21,6 @@ public class SavageController {
     @FXML
     void launchGame(ActionEvent event) throws Exception {
         String gameName = ((Control)event.getSource()).getId();
-        System.out.println(gameName);
 
         BaseController controller = GameFactory.createGame(gameName, player1Name.getText(), player2Name.getText());
         controller.show();
