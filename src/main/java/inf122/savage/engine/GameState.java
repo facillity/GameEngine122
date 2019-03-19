@@ -39,7 +39,7 @@ public class GameState{
     }
 
     public Player getCurrentPlayer(){
-        return this.players[this.currentPlayer-1];
+        return this.getPlayer(this.currentPlayer);
     }
 
     public Player getPlayer(int index){
