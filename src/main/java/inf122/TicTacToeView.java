@@ -24,11 +24,11 @@ public class TicTacToeView extends BaseView {
                 GraphicsContext gc = cell.getGraphicsContext2D();
                 if(game.getState().getGameBoard().getTile(r, c) == PLAYER_ONE){
                     gc.setStroke(Color.BLACK);
-                    gc.strokeLine(0, 0, cell.getWidth(), cell.getHeight());
-                    gc.strokeLine(cell.getWidth(), 0, 0, cell.getHeight());
+                    gc.strokeLine(PAD, PAD, cell.getWidth()-2*PAD, cell.getHeight()-2*PAD);
+                    gc.strokeLine(cell.getWidth()-2*PAD, PAD, PAD, cell.getHeight()-2*PAD);
                 }else if (game.getState().getGameBoard().getTile(r, c) == PLAYER_TWO){
                     gc.setStroke(Color.BLACK);
-                    gc.strokeOval(0, 0, cell.getWidth(), cell.getHeight());
+                    gc.strokeOval(PAD, PAD, cell.getWidth()-2*PAD, cell.getHeight()-2*PAD);
                 }
             }
         }

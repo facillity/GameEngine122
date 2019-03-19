@@ -30,10 +30,10 @@ public class OthelloView extends BaseView {
 
                 if(game.getState().getGameBoard().getTile(r, c) == PLAYER_ONE){
                     gc.setFill(Color.BLACK);
-                    gc.fillOval(0, 0, cell.getWidth(), cell.getHeight());
+                    gc.fillOval(PAD, PAD, cell.getWidth()-2*PAD, cell.getHeight()-2*PAD);
                 }else if (game.getState().getGameBoard().getTile(r, c) == PLAYER_TWO){
                     gc.setFill(Color.WHITE);
-                    gc.fillOval(0, 0, cell.getWidth(), cell.getHeight());
+                    gc.fillOval(PAD, PAD, cell.getWidth()-2*PAD, cell.getHeight()-2*PAD);
                 }
             }
         }

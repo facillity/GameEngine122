@@ -62,7 +62,6 @@ public class Checkers extends BaseGame {
 
                     int dr = (rowDiff > 0) ? 1 : -1;
                     int dc = (colDiff > 0) ? 1 : -1;
-                    System.out.println(dr + ":" + dc);
 
                     int between = this.state.getGameBoard().getTile(this.selected.getRow() + dr, this.selected.getCol() + dc);
                     if(between != EMPTY && between != this.state.getCurrentPlayerInt()){
@@ -103,7 +102,7 @@ public class Checkers extends BaseGame {
                 int tile = this.state.getGameBoard().getTile(pos.getRow() + r, pos.getCol() + c);
                 int target = this.state.getGameBoard().getTile(pos.getRow() + secondR, pos.getCol() + secondC);
                 if(tile != EMPTY && tile != this.state.getCurrentPlayerInt() && target == EMPTY){
-                    System.out.print("Can jump again");
+                    // Can jump again
                     return true;
                 }
             }

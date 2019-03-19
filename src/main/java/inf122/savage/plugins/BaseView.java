@@ -12,6 +12,7 @@ public abstract class BaseView {
     private AnchorPane board;
 
     public static final Color BG_COLOR = Color.rgb(241, 220, 212);
+    public static final int PAD = 5;
 
     private double cellWidth;
     private double cellHeight;
