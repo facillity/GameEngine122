@@ -1,6 +1,5 @@
 package inf122;
 
-import com.sun.corba.se.impl.orbutil.graph.Graph;
 import inf122.savage.plugins.BaseController;
 import inf122.savage.plugins.BaseGame;
 import inf122.savage.plugins.BaseView;
@@ -26,7 +25,7 @@ public class CheckersView extends BaseView {
 
         for(int r=0; r<game.getNumRows(); r++){
             for(int c=0; c<game.getNumCols(); c++){
-                Canvas cell = (Canvas) this.getBoard().lookup("#" + r + ";" + c);
+                Canvas cell = this.getCanvasAt(r, c);
                 GraphicsContext gc = cell.getGraphicsContext2D();
                 gc.setFill(BG_COLOR);
 
@@ -47,7 +46,7 @@ public class CheckersView extends BaseView {
     }
 
     private void drawSelectedBorder(int row, int col){
-        Canvas cell = (Canvas) this.getBoard().lookup("#" + row + ";" + col);
+        Canvas cell = this.getCanvasAt(row, col);
         GraphicsContext gc = cell.getGraphicsContext2D();
         gc.setFill(Color.YELLOW);
         gc.setStroke(Color.YELLOW);

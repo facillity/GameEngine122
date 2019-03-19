@@ -18,8 +18,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import static inf122.savage.engine.GameState.PLAYER_ONE;
-import static inf122.savage.engine.GameState.PLAYER_TWO;
+import static inf122.savage.plugins.BaseGame.PLAYER_ONE;
+import static inf122.savage.plugins.BaseGame.PLAYER_TWO;
+
 
 public class BaseController implements EventHandler<MouseEvent> {
     private BaseView view;

@@ -3,7 +3,6 @@ package inf122.savage.plugins;
 import inf122.savage.engine.*;
 import inf122.savage.util.PlayerFactory;
 
-import static inf122.savage.engine.GameState.PLAYER_ONE;
 
 public abstract class BaseGame {
 	protected GameState state;

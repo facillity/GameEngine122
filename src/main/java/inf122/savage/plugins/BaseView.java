@@ -47,6 +47,11 @@ public abstract class BaseView extends AnchorPane implements Initializable {
         board.getChildren().add(grid);
     }
 
+    public Canvas getCanvasAt(int row, int col){
+        Canvas cell = (Canvas) this.getBoard().lookup("#" + row + ";" + col);
+        return cell;
+    }
+
     public AnchorPane getBoard(){
         return this.board;
     }

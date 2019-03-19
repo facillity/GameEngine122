@@ -25,7 +25,7 @@ public class Othello extends BaseGame{
 	}
 
     @Override
-    public boolean resetGame(){
+    public void resetGame(){
     	super.resetGame();
         int [][] gameBoard = this.state.getGameBoard().getBoard();
         for(int row = 0; row < NUM_ROWS; ++row) {
@@ -38,7 +38,6 @@ public class Othello extends BaseGame{
 		gameBoard[3][4] = 2;
 		gameBoard[4][4] = 1;
 		gameBoard[4][3] = 2;
-		return true;
 	}
 
 	@Override

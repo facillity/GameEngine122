@@ -1,6 +1,5 @@
 package inf122;
 
-import inf122.savage.engine.GameState;
 import inf122.savage.plugins.BaseController;
 import inf122.savage.plugins.BaseGame;
 import inf122.savage.plugins.BaseView;
@@ -18,7 +17,7 @@ public class TicTacToeView extends BaseView {
         System.out.println("Drawing");
         for(int r=0; r<game.getNumRows(); r++){
             for(int c=0; c<game.getNumCols(); c++){
-                Canvas cell = (Canvas) this.getBoard().lookup("#" + r + ";" + c);
+                Canvas cell = this.getCanvasAt(r, c);
                 GraphicsContext gc = cell.getGraphicsContext2D();
                 if(game.getState().getGameBoard().getTile(r, c) == BaseGame.PLAYER_ONE){
                     gc.setStroke(Color.BLACK);
@@ -30,10 +29,6 @@ public class TicTacToeView extends BaseView {
                 }
             }
         }
-
-
-        // Check if game is over
-        // if so, make a popup or something.
     }
 
 }

@@ -23,7 +23,7 @@ public class OthelloView extends BaseView {
 
         for(int r=0; r<game.getNumRows(); r++){
             for(int c=0; c<game.getNumCols(); c++){
-                Canvas cell = (Canvas) this.getBoard().lookup("#" + r + ";" + c);
+                Canvas cell = this.getCanvasAt(r, c);
                 GraphicsContext gc = cell.getGraphicsContext2D();
 
                 if(game.getState().getGameBoard().getTile(r, c) == BaseGame.PLAYER_ONE){
@@ -45,7 +45,7 @@ public class OthelloView extends BaseView {
     {
         for(int r=0; r<game.getNumRows(); r++) {
             for (int c = 0; c < game.getNumCols(); c++) {
-                Canvas cell = (Canvas) this.getBoard().lookup("#" + r + ";" + c);
+                Canvas cell = this.getCanvasAt(r, c);
                 GraphicsContext gc = cell.getGraphicsContext2D();
                 gc.clearRect(0, 0, cell.getWidth(), cell.getHeight());
                 cell.getGraphicsContext2D().setFill(CELL_BG_COLOR);

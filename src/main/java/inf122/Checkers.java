@@ -5,10 +5,6 @@ import inf122.savage.plugins.BaseGame;
 import inf122.savage.plugins.BaseView;
 import inf122.savage.util.Coordinate;
 
-import static inf122.savage.engine.GameState.PLAYER_ONE;
-import static inf122.savage.engine.GameState.PLAYER_TWO;
-
-
 public class Checkers extends BaseGame {
     private static final int NUM_ROWS = 10;
     private static final int NUM_COLS = 10;
@@ -116,12 +112,10 @@ public class Checkers extends BaseGame {
     }
 
     @Override
-    public boolean resetGame(){
+    public void resetGame(){
         super.resetGame();
 
         this.createStartingBoard();
-
-        return true;
     }
 
     /**

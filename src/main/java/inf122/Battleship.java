@@ -3,7 +3,6 @@ package inf122;
 
 import java.util.ArrayList;
 
-import inf122.savage.engine.GameState;
 import inf122.savage.engine.Player;
 import inf122.savage.plugins.BaseGame;
 import inf122.savage.plugins.BaseView;
@@ -280,9 +279,9 @@ public class Battleship extends BaseGame {
      */
     public Player getWinningPlayer(){
         if (this.getWinner() == PLAYER_1){
-            return state.getPlayer(GameState.PLAYER_ONE);
+            return state.getPlayer(PLAYER_ONE);
         } else if (this.getWinner() == PLAYER_1){
-            return state.getPlayer(GameState.PLAYER_TWO);
+            return state.getPlayer(PLAYER_TWO);
         } else {
             return null;
         }
