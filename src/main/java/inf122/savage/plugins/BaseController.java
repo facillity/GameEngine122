@@ -59,7 +59,7 @@ public class BaseController implements EventHandler<MouseEvent> {
 
 
         Stage stage = new Stage();
-        stage.setResizable(true);
+        stage.setResizable(false);
         stage.sizeToScene();
         
         stage.initModality(Modality.APPLICATION_MODAL);

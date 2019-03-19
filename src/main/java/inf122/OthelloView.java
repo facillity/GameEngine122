@@ -1,6 +1,5 @@
 package inf122;
 
-import inf122.savage.engine.GameState;
 import inf122.savage.plugins.BaseController;
 import inf122.savage.plugins.BaseGame;
 import inf122.savage.plugins.BaseView;

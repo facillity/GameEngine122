@@ -13,8 +13,8 @@ public abstract class BaseGame {
 
 	public static final int PLAYER_ONE = 1;
 	public static final int PLAYER_TWO = 2;
-	public static final int TIE = 2;
 	public static final int GAME_NOT_OVER = 3;
+	public static final int TIE = 4;
 
 	private int numRows;
 	private int numCols;
@@ -80,7 +80,7 @@ public abstract class BaseGame {
 	public void resetGame(){
 		this.state.currentPlayer = PLAYER_ONE;
 		this.state.gameBoard.zeroOutBoard();
-		if(this.winner < TIE){
+		if(this.winner < GAME_NOT_OVER){
 			// is not tie or game not over
 			this.getWinningPlayer().addWin();
 			PlayerFactory.savePlayer(this.getWinningPlayer(), this.getName());

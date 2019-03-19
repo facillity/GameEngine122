@@ -167,7 +167,6 @@ public class Battleship extends BaseGame {
                 } else if (state.getGameBoard().getTile(row, col) == 2) {
                     // Hit!
                     state.getGameBoard().change(row, col, HIT); // hit or miss, i guess they never miss huh
-                    state.getPlayer(0).addScore(1);
                     this.state.switchPlayer();
                     checkShips();
                     checkWinner();
@@ -192,7 +191,6 @@ public class Battleship extends BaseGame {
                 } else if (state.getGameBoard().getTile(useRow, col) == 1){
                     // Hit!
                     state.getGameBoard().change(useRow, col, HIT);
-                    state.getPlayer(1).addScore(1);
                     this.state.switchPlayer();
                     checkShips();
                     checkWinner();
@@ -201,7 +199,6 @@ public class Battleship extends BaseGame {
                     return false;
                 }
             }
-//            return false;
         }
         return false;
     }
